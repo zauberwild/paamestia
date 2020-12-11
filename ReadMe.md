@@ -10,7 +10,7 @@ für das Praxisprojekt für Fach Praxis im BGT an der BBS.
 
 ---
 
-Software / "code"-Ordner
+Software (./code)
 ------------------------
 ### paamestia.py
 Hauptquellcode.

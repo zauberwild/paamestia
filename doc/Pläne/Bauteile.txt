@@ -1,0 +1,11 @@
+Ventil
+https://www.ebay.de/itm/Mini-12V-Magnetventil-Flussigkeit-Pneumatik-Elektromagnet-Ventil-Elektroventil/132330361464?hash=item1ecf811278:g:Z4EAAOSw6mZe8k4p
+
+Relais Board
+https://www.amazon.de/AZDelivery-8-Relais-Optokoppler-Low-Level-Trigger-Arduino/dp/B07CT7SLYQ/ref=pd_sbs_147_2/261-4391009-4390455?_encoding=UTF8&pd_rd_i=B07CT7SLYQ&pd_rd_r=f9774474-8001-4a8a-abd6-740a701e4f6a&pd_rd_w=g0M3i&pd_rd_wg=7rUIz&pf_rd_p=17269923-e95e-42b2-b8e1-f208b58f5815&pf_rd_r=RYM6GW43W3X3P8FHD9MK&refRID=RYM6GW43W3X3P8FHD9MK&th=1
+
+RasPi 3
+https://www.reichelt.de/raspberry-pi-3-b-uk-4x-1-2ghz-1gb-ram-wlan-bt-raspberry-pi-3uk-p262197.html?&trstct=vrt_pdn&nbc=1
+
+Pumpe
+https://www.ebay.de/b/Schlauchpumpen/bn_7000881442

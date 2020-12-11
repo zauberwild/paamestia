@@ -1,0 +1,1 @@
+alle technische Unterlagen, Zeichnungen und 3D-Modelle

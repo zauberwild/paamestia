@@ -1,3 +1,5 @@
 #!/bin/bash
 
 echo "Hey there!"
+
+python ./paamestia.py

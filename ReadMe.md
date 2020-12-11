@@ -1,4 +1,4 @@
-PaAmEsTiA
+Paamestia
 =========
 _Teammitglieder: Schiemann, Dominik, André, Arvid (@zauberwild)_
 

@@ -35,6 +35,3 @@ Hardware
 - Ansteuerung: Relais Board
 - Magnetventile und Schlauchpumpe
 - außerdem ein Monitor
-
-- [ ] number one
-- [x] number two

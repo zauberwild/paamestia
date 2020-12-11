@@ -8,6 +8,8 @@ Info
 In diesem Repository sind alle Dateien, Quellcodes, etc.
 für das Praxisprojekt für Fach Praxis im BGT an der BBS.
 
+---
+
 Software / "code"-Ordner
 ------------------------
 ### paamestia.py
@@ -24,6 +26,8 @@ Der Rest der Datei bildet das Rezept nach folgender Formatierung:
 `<Getränk2>,<Menge in ml>`  
 `<Getränk3>,<Menge in ml>`  
 `...`
+
+---
 
 Hardware
 --------

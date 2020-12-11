@@ -1,5 +1,3 @@
 #!/bin/bash
-
-echo "Hey there!"
-
+echo "paamestia is starting..."
 python ./paamestia.py

@@ -18,7 +18,7 @@ Alle zum Programm zugehörigen Dateien
 #### recipes
 Hier werden alle Rezepte abgespeichert
 Der Rezept-Name wird vom Dateinamen vorgegeben und in der
-ersten Zeile stehen zusätzl. Details zum Rezept.
+ersten Zeile stehen zusätzliche Details zum Rezept.
 Der Rest der Datei bildet das Rezept nach folgender Formatierung:  
 `<Getränk1>,<Menge in ml>`  
 `<Getränk2>,<Menge in ml>`  

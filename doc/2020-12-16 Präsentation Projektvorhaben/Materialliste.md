@@ -1,5 +1,5 @@
 ## Raspberry Pi
-https://www.reichelt.de/raspberry-pi-3-b-4x-1-2-ghz-1-gb-ram-wlan-bt-raspberry-pi-3-p164977.html
+https://www.amazon.de/Raspberry-Pi-Model-ARM-Cortex-A53-Bluetooth/dp/B01CD5VC92/ref=sr_1_3?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=raspberry+pi+3&qid=1607781062&quartzVehicle=72-820&replacementKeywords=raspberry+pi&sr=8-3
 33,6 €
 
 ## Magnetventil
@@ -25,6 +25,10 @@ https://www.amazon.de/Huayue-Schlauchverbinder-Luftschlauch-Kunststoff-Luftventi
 ## Silikonstopfen
 https://www.amazon.de/Tuuters-Silikonstopfen-Konische-Abdeckstopfen-Gummistopfen/dp/B01LWOXOLZ/ref=sr_1_5?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=11L4LGF9305AW&dchild=1&keywords=silikonstopfen&qid=1607778777&sprefix=silikonstopf%2Caps%2C253&sr=8-5&th=1
 21€
+
+## Taster
+https://www.amazon.de/Gebildet-Druckknopfschalter-Autotrompete-Tischlampe-Haust%C3%BCrklingel/dp/B07XRBDBXT/ref=sr_1_6?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=taster&qid=1607780968&sr=8-6
+9€
 
 ## Monitor
 von Friedrichs

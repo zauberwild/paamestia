@@ -11,11 +11,25 @@ class video:
 	chosen randomly.
 	"""
 
-	def __init__(self):
+	def __init__(self, videos):
 		play = False
 
-	def play(self, forwards=True):
+	def start(self, forwards=True):
 		"""	start video 
-		!! will start video from beginning. please use pause() to unpause
-		- forwards=True: set False, if you want play backwards
+		- forwards=True: set False, if you want play it backwards
 		"""
+		pass
+
+	def pause(self):
+		""" pause / unpause the video
+		"""
+		pass
+
+	def draw(self):
+		""" draws the video
+		"""
+		pass
+
+	
+
+

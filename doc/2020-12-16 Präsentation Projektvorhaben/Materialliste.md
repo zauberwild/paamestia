@@ -30,6 +30,10 @@ https://www.amazon.de/Tuuters-Silikonstopfen-Konische-Abdeckstopfen-Gummistopfen
 https://www.amazon.de/Gebildet-Druckknopfschalter-Autotrompete-Tischlampe-Haust%C3%BCrklingel/dp/B07XRBDBXT/ref=sr_1_6?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=taster&qid=1607780968&sr=8-6
 9€
 
+## Trafo
+https://www.amazon.de/Netzteil-Netzadapter-Transformator-Kaltger%C3%A4testecker-Streifen/dp/B07FNMKTBL/ref=pd_bxgy_2/261-4391009-4390455?_encoding=UTF8&pd_rd_i=B07FNMKTBL&pd_rd_r=5facb524-3c42-4466-b2ca-3c239e0d21de&pd_rd_w=tGAGx&pd_rd_wg=eKUzg&pf_rd_p=4490d326-3239-499b-8c8a-0dd8d6ad582a&pf_rd_r=R4BM5MCHZ24WEFDZM462&refRID=R4BM5MCHZ24WEFDZM462&th=1
+10€
+
 ## Monitor
 von Friedrichs
 0€

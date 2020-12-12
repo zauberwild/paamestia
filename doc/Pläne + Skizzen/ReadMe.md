@@ -1,1 +1,0 @@
-Pläne, grobe Skizzen und ähnl.

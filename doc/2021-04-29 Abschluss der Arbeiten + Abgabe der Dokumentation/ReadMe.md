@@ -1,1 +1,0 @@
-alle Dokumente und Dokumentationen für die Abgabe

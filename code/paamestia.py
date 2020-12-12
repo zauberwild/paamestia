@@ -3,4 +3,4 @@ paamestia
 
 """
 
-print("hello from Python")
+print("hello from paamestia")

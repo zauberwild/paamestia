@@ -12,8 +12,8 @@ für das Praxisprojekt für Fach Praxis im BGT an der BBS.
 
 Software (./code)
 ------------------------
-### paamestia.py
-Hauptquellcode.
+### .py-Dateien
+Quellcode, nähere Infos in den Dateien
 
 ### lib
 Alle zum Programm zugehörigen Dateien

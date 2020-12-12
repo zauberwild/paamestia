@@ -26,7 +26,7 @@ Der Rezept-Name wird vom Dateinamen vorgegeben und in der ersten Zeile stehen zu
 `<Getränk3>,<Menge in ml>`  
 `...`
 #### src
-Beinhaltet die Video-Ordner
+Beinhaltet die Video-Ordner und sonstige Mediendateien
 
 ---
 

@@ -16,10 +16,12 @@ class recipe:
 		self.vol = []
 		self.loadRecipe()
 
-	def loadRecipe(self, new_path = self.path):
+	def loadRecipe(self, new_path = ""):
 		""" load recipe
 		- new_path: use to set a new recipe up
 		"""
+		if new_path == "":
+			new_path = self.path
 	
 	def mixRecipe(self):
 		"""ISSUE NEEDED? """

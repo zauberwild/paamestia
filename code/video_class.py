@@ -28,7 +28,7 @@ class video:
 		
 		i = 1
 		for filename in os.listdir(self.path):
-			index = getFrameIndex(self.digits)
+			index = getFrameIndex(self.digits,self.index)
 			img.append = pygame.image.load(self.path + self.surfix + self.index + self.prefix)
 
 			i += 1

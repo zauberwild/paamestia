@@ -4,7 +4,7 @@ video_class.py
 contains class for videos
 """
 
-import os, pathlib
+import os, pathlib, pygame
 gen_path = str(pathlib.Path(__file__).parent.absolute())
 
 class video:
@@ -26,18 +26,15 @@ class video:
 		self.prefix = prefix
 		self.img = []
 		
-		i = 1
-		for filename in os.listdir(self.path):
-			index = getFrameIndex(self.digits,self.index)
-			img.append = pygame.image.load(self.path + self.surfix + self.index + self.prefix)
-
-			i += 1
-
+		for i, filename in enumerate(os.listdir(self.path)):
+			index = getFrameIndex(self.digits,i+1)
+			print(self.path + self.surfix + index + self.prefix)
+			self.img.append(pygame.image.load(self.path + self.surfix + index + self.prefix))
+		
 		self.play = False
 	
 	def testFeedback(self):
-		print(self.path)
-		print(self.path + self.surfix + "00001" + self.prefix)
+		pass
 
 	def start(self, forwards=True):
 		"""	start video 
@@ -61,13 +58,13 @@ def getFrameIndex(digits, index):
 	- index: number to return
 	"""
 	index_str = str(index)
-	len_of_index = index_str.length()
+	len_of_index = len(str(index))
 
 	out = ""
 	for i in range(digits - len_of_index):
 		out += "0"
 	
-	out += index
+	out += str(index)
 
 	return out
 	

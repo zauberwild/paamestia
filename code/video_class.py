@@ -60,8 +60,8 @@ def getFrameIndex(digits, index):
 	- digits: number of digits
 	- index: number to return
 	"""
-	
-	len_of_index = 
+	index_str = str(index)
+	len_of_index = index_str.length()
 
 	out = ""
 	for i in range(digits - len_of_index):

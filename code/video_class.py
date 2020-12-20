@@ -11,8 +11,13 @@ class video:
 	chosen randomly.
 	"""
 
-	def __init__(self, videos):
-		play = False
+	def __init__(self, video_path):
+		""" vieo class. uses sprites do display a video
+		- video_path: path to folder
+		"""
+		self.path = video_path
+		self.img = []
+		self.play = False
 
 	def start(self, forwards=True):
 		"""	start video 

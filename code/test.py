@@ -2,10 +2,9 @@
 PLACEHOLDER for testing
 """
 
-import video_class
+import video_class, pygame
+pygame.init()
 
-test_vid = video_class.video("/lib/test/","frames-",5,".png")
+test_vid = video_class.video("/lib/test/","",4,".png")
 
-#test_vid.testFeedback()
-
-print(video_class.getFrameIndex(5,2))
+test_vid.testFeedback()

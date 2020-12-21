@@ -20,7 +20,7 @@ test_vid = medialib.video("/src/test/")
 
 video_list = []
 for i in range(15):
-	video_list.append(medialib.video("/src/test/"))
+	video_list.append(medialib.video("/src/test/",i))
 
 print("Video loaded!")
 

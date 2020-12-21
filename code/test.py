@@ -2,7 +2,6 @@
 PLACEHOLDER for testing
 """
 
-from os import P_OVERLAY
 import medialib
 import pygame
 pygame.init()

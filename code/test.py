@@ -5,7 +5,7 @@ PLACEHOLDER for testing
 import medialib, pygame
 pygame.init()
 
-test_vid = medialib.video("/lib/test/")
+test_vid = medialib.video("/src/test/")
 
 print(test_vid.frames)
 print(test_vid.audio)

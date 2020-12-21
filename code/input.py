@@ -5,5 +5,5 @@ this script handles the input via pushbuttons
 """
 
 """
-NOTE evt. not needed
+ISSUE evt. not needed
 """

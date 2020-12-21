@@ -2,10 +2,11 @@
 PLACEHOLDER for testing
 """
 
-import video_class, pygame
+import medialib, pygame
 pygame.init()
 
-test_vid = video_class.video("/lib/test/")
+test_vid = medialib.video("/lib/test/")
 
 print(test_vid.frames)
 print(test_vid.audio)
+print(test_vid.img)

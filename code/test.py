@@ -17,8 +17,9 @@ pygame.display.flip()
 
 test_vid = medialib.video("/src/test/")
 
+
+video_list = []					#PLACEHOLDER for testing
 if False:
-	video_list = []					#PLACEHOLDER for testing
 	for i in range(15):
 		video_list.append(medialib.video("/src/test/"))
 

@@ -10,7 +10,7 @@ class video:
 	this class handles the sprites/spritesheets folders and makes videos out of these.
 	"""
 
-	def __init__(self, video_path, i=0):
+	def __init__(self, video_path):
 		""" vieo class. uses sprites do display a video
 		- video_path: path to folder
 		"""
@@ -19,7 +19,6 @@ class video:
 		self.audio_path = ""
 		
 		for filename in os.listdir(self.path):
-			print(str(i) + ": " + filename)		#PLACEHOLDER for testing
 			if ".wav" in filename:					# filters the audio file out
 				self.audio_path = self.path + filename
 			else:

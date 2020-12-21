@@ -9,4 +9,3 @@ test_vid = medialib.video("/lib/test/")
 
 print(test_vid.frames)
 print(test_vid.audio)
-print(test_vid.img)

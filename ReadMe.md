@@ -15,7 +15,7 @@ Software (./code)
 ### .py-Dateien
 Quellcode
 
-### lib
+### src
 Alle zum Programm zugehörigen Dateien
 
 #### recipes
@@ -26,7 +26,7 @@ Der Rezept-Name wird vom Dateinamen vorgegeben und in der ersten Zeile stehen zu
 `<Getränk3>,<Menge in ml>`  
 `...`  
 
-#### src
+#### media
 Beinhaltet die Video-Ordner und sonstige Mediendateien
 
 ---

@@ -11,9 +11,9 @@ für das Praxisprojekt für Fach Praxis im BGT an der BBS.
 ---
 
 Software (./code)
-------------------------
+-----------------
 ### .py-Dateien
-Quellcode, nähere Infos in den Dateien
+Quellcode
 
 ### lib
 Alle zum Programm zugehörigen Dateien
@@ -24,7 +24,8 @@ Der Rezept-Name wird vom Dateinamen vorgegeben und in der ersten Zeile stehen zu
 `<Getränk1>,<Menge in ml>`  
 `<Getränk2>,<Menge in ml>`  
 `<Getränk3>,<Menge in ml>`  
-`...`
+`...`  
+
 #### src
 Beinhaltet die Video-Ordner und sonstige Mediendateien
 

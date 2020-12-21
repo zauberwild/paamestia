@@ -17,11 +17,11 @@ pygame.display.flip()
 
 test_vid = medialib.video("/src/test/")
 
-"""
+
 video_list = []					#PLACEHOLDER for testing
-for i in range(30):
+for i in range(15):
 	video_list.append(medialib.video("/src/test/",i))
-"""
+
 
 print("Video loaded!")
 
@@ -37,6 +37,11 @@ while prog_active:
 				test_vid.start()
 			if event.key == pygame.K_2:
 				test_vid.start(False)
+			if event.key == pygame.K_7:
+				test_vid.img.clear()
+				for i in range(15):
+					video_list[i].img.clear()
+				print("cleared!")
 	
 	screen.fill((127,127,127))
 

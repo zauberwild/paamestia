@@ -19,11 +19,10 @@ class video:
 		self.audio_path = ""
 		
 		for filename in os.listdir(self.path):
-			print(str(i) + ": " + filename)
+			print(str(i) + ": " + filename)		#PLACEHOLDER for testing
 			if ".wav" in filename:					# filters the audio file out
 				self.audio_path = self.path + filename
 			else:
-				#print(self.path + filename)											#DEL
 				self.img.append(pygame.image.load(self.path + filename))
 		
 		self.audio = pygame.mixer.Sound(self.audio_path)

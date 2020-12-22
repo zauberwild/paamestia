@@ -27,7 +27,8 @@ class video:
 			else:												# saves the image files
 				self.img.append(pygame.image.load(self.path + filename))
 		
-		self.audio = pygame.mixer.Sound(self.audio_path)
+		self.audio_forward = pygame.mixer.Sound(self.audio_forwards_path)
+		self.audio_backwards = pygame.mixer.Sound(self.audio_backwards_path)
 
 		self.frames = len(self.img)
 
@@ -47,10 +48,10 @@ class video:
 		self.repeat = repeat
 		if forwards:
 			self.cur_frame = 0
+			pygame.mixer.Sound.play(self.audio_forward)
 		else:
 			self.cur_frame = self.frames - 1
-
-		pygame.mixer.Sound.play(self.audio)
+			pygame.mixer.Sound.play(self.audio_backwards)
 
 		print("now playing, forwards=" + str(self.forwards) + ", repeat=" + str(self.repeat))
 

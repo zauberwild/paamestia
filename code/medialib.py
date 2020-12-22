@@ -36,6 +36,8 @@ class video:
 	def start(self, forwards=True, repeat=False):
 		"""	start video 
 		- forwards=True: set False, if you want play it backwards
+		- repeat=False: set True, to endlessly repeat the video
+			(can be stopped with stop())
 		"""
 		self.play = True
 		self.forwards = forwards
@@ -53,6 +55,11 @@ class video:
 		""" pause / unpause the video
 		"""
 		self.play != self.play
+	
+	def stop(self):
+		""" stop the video
+		"""
+		self.play = False
 
 	def draw(self, local_screen):
 		""" draws the video

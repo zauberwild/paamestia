@@ -16,12 +16,15 @@ class video:
 		"""
 		self.path = gen_path + video_path
 		self.img = []
-		self.audio_path = ""
+		self.audio_forwards_path = ""
+		self.audio_backwards_path = ""
 		
 		for filename in os.listdir(self.path):
-			if ".wav" in filename:					# filters the audio file out
-				self.audio_path = self.path + filename
-			else:
+			if "forwards.wav" == filename:						# filters the audio files out
+				self.audio_forwards_path = self.path + filename
+			elif "backwards.wav" == filename:					# filters the audio files out
+				self.audio_backwards_path = self.path + filename
+			else:												# saves the image files
 				self.img.append(pygame.image.load(self.path + filename))
 		
 		self.audio = pygame.mixer.Sound(self.audio_path)

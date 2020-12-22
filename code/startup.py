@@ -17,7 +17,6 @@ print("paamestia is starting...")
 normal_startup = True
 
 # TODO [t1] startup routine; ask if normal startup should be continued or cancelled
-#ISSUE [i1] pygame 
 
 if normal_startup:
 	#python ./paamestia.py

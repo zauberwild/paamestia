@@ -2,7 +2,7 @@
 
 ---
 
-## Notizen zu Videowiedergabe via VLC
+## Videowiedergabe via VLC
 
 ### Befehle
 Starten des Videos:  

@@ -10,11 +10,11 @@ class video:
 	this class handles the sprites/spritesheets folders and makes videos out of these.
 	"""
 
-	def __init__(self, video_path):
+	def __init__(self, folder_path):
 		""" vieo class. uses sprites do display a video
 		- video_path: path to folder
 		"""
-		self.path = gen_path + video_path
+		self.path = gen_path + folder_path
 		self.img = []
 		self.audio_forwards_path = ""
 		self.audio_backwards_path = ""
@@ -22,9 +22,9 @@ class video:
 		for filename in os.listdir(self.path):
 			if "forwards.wav" == filename:						# filters the audio files out
 				self.audio_forwards_path = self.path + filename
-			elif "backwards.wav" == filename:					# filters the audio files out
+			elif "backwards.wav" == filename:
 				self.audio_backwards_path = self.path + filename
-			else:												# saves the image files
+			else:												# loads the image files		#ISSUE [i3] linux loads frames in a seamingly random order, not alphabetical
 				self.img.append(pygame.image.load(self.path + filename))
 		
 		self.audio_forward = pygame.mixer.Sound(self.audio_forwards_path)

@@ -3,7 +3,7 @@
 ---
 
 ## allgemeine Videowiedergabe
-- Aufteilung zwischen VLC (exetern) und pygame (intern / mit einzelnen Frames)
+- Aufteilung zwischen VLC (extern) und pygame (intern / mit einzelnen Frames)
 - VLC für lange Videos
 - pygame für kürzere Videos und alles mit Overlays / alles interaktive
 

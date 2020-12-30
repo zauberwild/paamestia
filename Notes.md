@@ -11,19 +11,22 @@
 
 ## Videowiedergabe via VLC
 
-### Befehle
+### Befehle (Linux):
 Starten des Videos:  
-`cvlc -f --no-video-title-show  ./<path>`
+`cvlc -f --no-video-title-show  ./<path> &`
 
 Enden des Videos / VLC beenden:  
-`kill vlc`
+`killall vlc`
 
-### Konsolen-Log:  
-`pi@raspberrypi:/media/pi/LEGOUSB/test $ cvlc -f --no-video-title-show  ./color.mov`  
-`VLC media player 3.0.11 Vetinari (revision 3.0.11-0-gdc0c5ced72)`  
-`[008a4018] dummy interface: using the dummy interface module...`  
-`[swscaler @ 0x92c49820] No accelerated colorspace conversion found from yuv420p to rgb24.`  
-`pi@raspberrypi:/media/pi/LEGOUSB/test $ `  
+### in Python:
+`import os`  
+`os.command(<command>)`  
+
+´killall vlc´ muss zeitverzögert ausgeführt, werden um den vlc-Prozess zu
+killen, wenn das fertig abgepielt wurde.
+Benötigt:  
+- `time`-Modul
+- `time.time` zum Zeitmessen
 
 ---
 

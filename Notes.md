@@ -22,7 +22,7 @@ Enden des Videos / VLC beenden:
 `import os`  
 `os.command(<command>)`  
 
-´killall vlc´ muss zeitverzögert ausgeführt, werden um den vlc-Prozess zu
+`killall vlc` muss zeitverzögert ausgeführt, werden um den vlc-Prozess zu
 killen, wenn das fertig abgepielt wurde.
 Benötigt:  
 - `time`-Modul

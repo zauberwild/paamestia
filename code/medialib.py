@@ -76,13 +76,13 @@ class Animation:
 		if forwards:				# set start frame and start audio (when exiting and not muted)
 			self.frame = 0
 			if self.audio_forwards != None and audio:
-				self.__start_audio__()
+				self._start_audio()
 		else:
 			self.frame = self.n_frames - 1
 			if self.audio_backwards != None and audio:
-				self.__start_audio__(forwards=False)
+				self._start_audio(forwards=False)
 	
-	def __start_audio__(self, forwards=True):
+	def _start_audio(self, forwards=True):
 		""" play the audio files (internal use only)
 		- forwards=True: True: play forwards.wav / False: play backwards.wav
 		"""
@@ -116,7 +116,7 @@ class Animation:
 						if self.repeat:							# if repeat on
 							if not self.audio_mute:
 								self.frame = 0						# start over
-							self.__start_audio__()
+							self._start_audio()
 						else:
 							self.play = False					# stop
 				else:
@@ -125,7 +125,7 @@ class Animation:
 						if self.repeat:							# if repeat on
 							self.frame = self.n_frames - 1		# start over
 							if not self.audio_mute:
-								self.__start_audio__(forwards=False)
+								self._start_audio(forwards=False)
 						else:
 							self.play = False					# stop
 	

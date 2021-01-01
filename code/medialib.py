@@ -2,7 +2,7 @@
 contains class for videos
 """
 
-import os, pathlib, pygame	
+import os, pathlib, pygame, pygame.mixer
 gen_path = str(pathlib.Path(__file__).parent.absolute())
 
 class video:
@@ -15,27 +15,29 @@ class video:
 		- video_path: path to folder
 		"""
 		self.path = gen_path + folder_path
-		self.img = []
-		self.audio_forwards_path = ""
-		self.audio_backwards_path = ""
-		
+
+		self.img_path = []
 		for filename in os.listdir(self.path):
-			if "forwards.wav" == filename:						# filters the audio files out
-				self.audio_forwards_path = self.path + filename
-			elif "backwards.wav" == filename:
-				self.audio_backwards_path = self.path + filename
-			else:												# loads the image files		#ISSUE [i3] linux loads frames in a seamingly random order, not alphabetical
-				self.img.append(pygame.image.load(self.path + filename))
-		
-		self.audio_forward = pygame.mixer.Sound(self.audio_forwards_path)
+			if filename != "forwards.wav" and filename != "backwards.wav":
+				self.img_path.append(self.path + filename)
+		self.img_path.sort()
+		self.img = []
+		self.n_frames = len(self.img_path)
+
+		self.audio_forwards_path = self.path + "forwards.wav"
+		self.audio_backwards_path = self.path + "backwards.wav"
+		self.audio_forwards = pygame.mixer.Sound(self.audio_backwards_path)
 		self.audio_backwards = pygame.mixer.Sound(self.audio_backwards_path)
-
-		self.frames = len(self.img)
-
 		self.play = False
-		self.cur_frame = 0
+		self.frame = 0
 		self.forwards = True
 		self.repeat = False
+	
+	def load(self):
+		""" loads the frames as pygame.surface. please use sparingly
+		"""
+		for i in range(self.n_frames):
+			path = self.path
 
 	def start(self, forwards=True, repeat=False):
 		"""	start video 

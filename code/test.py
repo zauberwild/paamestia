@@ -17,16 +17,10 @@ pygame.display.flip()
 
 test_vid = medialib.video("/src/test/")
 
+for i in test_vid.img_path:
+	print(i)
 
-video_list = []					#PLACEHOLDER for testing
-if False:
-	for i in range(15):
-		video_list.append(medialib.video("/src/test/"))
-
-
-print("Video loaded!")
-
-prog_active = True
+prog_active = False
 while prog_active:
 	# input
 	for event in pygame.event.get():

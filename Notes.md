@@ -22,7 +22,7 @@ Starten des Videos:
 
 Enden des videos / VLC beenden:
 
-`TASKKILL /IM VLC.EXE`
+`TASKKILL /IM VLC.EXE`  (nicht notwendig, vlc beendet von selbst)
 
 ### Umsetzung in Python:
 `import os`  

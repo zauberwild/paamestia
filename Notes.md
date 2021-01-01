@@ -24,7 +24,7 @@ Enden des videos / VLC beenden:
 
 `TASKKILL /IM VLC.EXE`
 
-### in Python:
+### Umsetzung in Python:
 `import os`  
 `os.command(<command>)`  
 

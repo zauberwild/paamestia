@@ -180,10 +180,14 @@ class Video:
 			commandline = vlc_start_windows
 		self.chosen_file = randint(0,len(self.files)-1)		# choose a random file
 		commandline = commandline.replace("<path>", str(self.files[self.chosen_file]))
-		print(commandline)
 		os.system(commandline)
 
 	def kill(self):
 		""" kill VLC process. might kill all running VLC-processes
 		"""
-		pass
+		commandline = ""
+		if os_is_linux:
+			commandline = vlc_kill_linux
+		else:
+			commandline = vlc_kill_windows
+		os.system(commandline)

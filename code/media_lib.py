@@ -180,7 +180,6 @@ class Video:
 			commandline = vlc_start_windows
 		self.chosen_file = randint(0,len(self.files)-1)		# choose a random file
 		commandline = commandline.replace("<path>", str(self.files[self.chosen_file]))
-		commandline = commandline.replace("/", "\\")
 		print(commandline)
 		os.system(commandline)
 

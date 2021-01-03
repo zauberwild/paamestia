@@ -137,7 +137,7 @@ class Animation:
 os_is_linux = not os.path.isfile(gen_path + "/src/.windows")		# look for a ".windows" file, which only exists on my Windows-PC
 vlc_start_linux = "cvlc -f --no-video-title-show --play-and-exit <path> &"			# command lines for vlc on various platforms
 vlc_kill_linux = "killall vlc"														# <path> will be replaced with a path
-vlc_start_windows = "C:\"\Program Files\VideoLAN\VLC\vlc.exe\" -f --no-video-title-show --play-and-exit <path>"
+vlc_start_windows = "C:'\Program Files\VideoLAN\VLC/vlc.exe' -f --no-video-title-show --play-and-exit <path>"
 vlc_kill_windows = "TASKKILL /IM VLC.EXE"
 
 class Video:
@@ -179,8 +179,10 @@ class Video:
 		else:
 			commandline = vlc_start_windows
 		self.chosen_file = randint(0,len(self.files)-1)		# choose a random file
-		commandline.replace("<path>", self.files[self.chosen_file])
-		os.command(commandline)
+		commandline = commandline.replace("<path>", str(self.files[self.chosen_file]))
+		commandline = commandline.replace("/", "\\")
+		print(commandline)
+		os.system(commandline)
 
 	def kill(self):
 		""" kill VLC process. might kill all running VLC-processes

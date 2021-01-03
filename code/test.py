@@ -2,20 +2,24 @@
 PLACEHOLDER for testing
 """
 
-import medialib
+import media_lib
 import pygame
 pygame.init()
 
 FPS = 24
 
-screen = pygame.display.set_mode((1280, 720))
+screen = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN)
 pygame.display.set_caption("test")
 clock = pygame.time.Clock()
 
 screen.fill((0,0,255))
 pygame.display.flip()
 
-test_vid = medialib.Animation("/src/test/")
+test_anim = media_lib.Animation("/src/test/")
+
+vid_files = ["/src/color.mov", "/dummy.mk4", "/src/jump.mov", "/src/movie.mp4n", "/dummy.mpg"]
+vid_lengths = [1, 42, 2, 442, 69]
+test_vid = media_lib.Video(vid_files, vid_lengths)
 
 prog_active = True
 while prog_active:
@@ -27,26 +31,32 @@ while prog_active:
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_1:
 				print("### playing")
-				test_vid.start(audio=False)
+				test_anim.start(audio=False)
 			if event.key == pygame.K_2:
-				test_vid.start(forwards=False, audio=False)
+				test_anim.start(forwards=False)
 				print("### playing reverse")
 			if event.key == pygame.K_3:
-				test_vid.load()
+				test_anim.load()
 				print("### Loading done")
 			if event.key == pygame.K_4:
-				test_vid.unload()
+				test_anim.unload()
 				print("### cleared!")
 			if event.key == pygame.K_5:
-				test_vid.pause()
+				test_anim.pause()
 				print("### pause/play")
 			if event.key == pygame.K_6:
-				test_vid.stop()
+				test_anim.stop()
 				print("### stopped!")
+			if event.key == pygame.K_7:
+				test_vid.start()
+				print("### VLC start")
+			if event.key == pygame.K_8:
+				test_vid.kill
+				print("### VLC killed!")
 	
 	screen.fill((127,127,127))
 
-	test_vid.draw(screen)
+	test_anim.draw(screen)
 
 	pygame.display.flip()
 	

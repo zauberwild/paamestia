@@ -135,9 +135,9 @@ class Animation:
 	
 # global variables for video-class:
 os_is_linux = not os.path.isfile(gen_path + "/src/.windows")		# look for a ".windows" file, which only exists on my Windows-PC
-vlc_start_linux = "cvlc -f --no-video-title-show --play-and-exit <path> &"			# command lines for vlc on various platforms
-vlc_kill_linux = "killall vlc"														# <path> will be replaced with a path
-vlc_start_windows = "C:'\Program Files\VideoLAN\VLC/vlc.exe' -f --no-video-title-show --play-and-exit <path>"
+vlc_start_linux = "cvlc -f --no-video-title-show --play-and-exit --no-loop <path> &"			# command lines for vlc on various platforms
+vlc_kill_linux = "killall vlc"																	# <path> will be replaced with a path
+vlc_start_windows = "vlc -f --no-video-title-show --play-and-exit --no-loop <path>"
 vlc_kill_windows = "TASKKILL /IM VLC.EXE"
 
 class Video:

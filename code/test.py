@@ -59,5 +59,7 @@ while prog_active:
 	test_anim.draw(screen)
 
 	pygame.display.flip()
+
+	print(clock.get_fps())
 	
 	clock.tick(FPS)

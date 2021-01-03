@@ -1,6 +1,5 @@
 """
-output.py
-
+handles input / output
 PLACEHOLDER
 """
 

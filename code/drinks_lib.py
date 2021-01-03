@@ -1,7 +1,5 @@
 """
-drink_class.py
-
-contains the recipe-class and drin-class
+contains the recipe-class and drink-class
 """
 
 class recipe:

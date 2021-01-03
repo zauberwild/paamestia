@@ -1,5 +1,5 @@
 """
-contains class for videos
+contains class for animations and videos
 """
 
 import os, pathlib, pygame, pygame.mixer

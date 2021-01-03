@@ -26,7 +26,7 @@ Enden des videos / VLC beenden:
 
 ### Umsetzung in Python:
 `import os`  
-`os.command(<command>)`  
+`os.system(<command>)`  
 
 `killall vlc` muss zeitverzögert ausgeführt, werden um den vlc-Prozess zu
 killen, wenn das Video fertig abgepielt wurde.

@@ -2,8 +2,11 @@
 contains class for animations and videos
 """
 
-import os, pathlib, pygame, pygame.mixer
-gen_path = str(pathlib.Path(__file__).parent.absolute())
+import os							# used to scan for files execute commands from a commandline
+from random import randint			# random function to get random list index in video class
+from pathlib import Path			# used to get the complete path of the working directory
+import pygame, pygame.mixer			# used in Ainmation-Class for displaying sprites and playing audio files
+gen_path = str(Path(__file__).parent.absolute())		# get the complete path of the "code"-directory
 
 class Animation:
 	"""
@@ -11,10 +14,11 @@ class Animation:
 	"""
 
 	def __init__(self, folder_path):
-		""" vieo class. uses sprites do display a video
+		""" animation class. uses sprites do display a video
 		- video_path: path to media folder
 		"""
 		self.path = gen_path + folder_path
+		self.w, self.h = pygame.display.get_surface().get_size()
 		# Images
 		self.img_path = []								# save all paths to the image files
 		for filename in os.listdir(self.path):
@@ -46,7 +50,7 @@ class Animation:
 		"""
 		if not self.loaded:
 			for i in self.img_path:
-				self.img.append(pygame.image.load(i))
+				self.img.append(pygame.transform.scale(pygame.image.load(i), (self.w, self.h)))
 			self.n_frames = len(self.img)
 			self.loaded = True
 		
@@ -114,9 +118,9 @@ class Animation:
 					self.frame += 1								# advance frame
 					if self.frame >= self.n_frames:				# if at the end
 						if self.repeat:							# if repeat on
-							if not self.audio_mute:
-								self.frame = 0						# start over
-							self._start_audio()
+							if not self.audio_mute:					# start over
+								self._start_audio()
+							self.frame = 0	
 						else:
 							self.play = False					# stop
 				else:
@@ -129,5 +133,56 @@ class Animation:
 						else:
 							self.play = False					# stop
 	
+# global variables for video-class:
+os_is_linux = not os.path.isfile(gen_path + "/src/.windows")		# look for a ".windows" file, which only exists on my Windows-PC
+vlc_start_linux = "cvlc -f --no-video-title-show --play-and-exit <path> &"			# command lines for vlc on various platforms
+vlc_kill_linux = "killall vlc"														# <path> will be replaced with a path
+vlc_start_windows = "C:\"\Program Files\VideoLAN\VLC\vlc.exe\" -f --no-video-title-show --play-and-exit <path>"
+vlc_kill_windows = "TASKKILL /IM VLC.EXE"
 
+class Video:
+	"""
+	this class can play videos with VLC Media Player by starting it from the command line
+	"""
 
+	def __init__(self, files, length):
+		""" video class. starts vlc via commandline
+		- files: list with all video files. if given multiple files, one will be chosen at random
+		- length: according list with the length of the videos in seconds
+		"""
+		self.files = files
+		self.length = length
+
+		for i in range(len(self.files)):		# add the directory path to the file names
+			self.files[i] = gen_path + self.files[i]
+
+		delete = []								# test if every file can be found
+		for i in range(len(self.files)):
+			if not os.path.isfile(self.files[i]):
+				delete.append(i)
+		delete.sort(reverse=True)				# sort the list to decreasing values, so the missing indexes won't affect other indexes that need to be deleted
+		for i in delete:						# delete all files that couldn't be found
+			del self.files[i]
+			del self.length[i]
+		
+		# stats / params
+		self.play = False
+		self.chosen_file = 0
+		self.t_start = 0
+	
+	def start(self):
+		""" start the video
+		"""
+		commandline = ""		# prepare the commandline
+		if os_is_linux:
+			commandline = vlc_start_linux
+		else:
+			commandline = vlc_start_windows
+		self.chosen_file = randint(0,len(self.files)-1)		# choose a random file
+		commandline.replace("<path>", self.files[self.chosen_file])
+		os.command(commandline)
+
+	def kill(self):
+		""" kill VLC process. might kill all running VLC-processes
+		"""
+		pass

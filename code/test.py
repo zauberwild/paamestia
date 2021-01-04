@@ -22,7 +22,7 @@ pygame.display.flip()
 
 test_anim = media_lib.Animation("/src/test_klein/")
 
-vid_files = ["/src/color.mov", "/dummy.mk4", "/src/jump.mov", "/src/media/intro/intro.mov", "/dummy.mpg"]
+vid_files = ["/src/intro_small.mp4"]
 vid_lengths = [1, 42, 2, 442, 69]
 test_vid = media_lib.Video(vid_files)
 
@@ -62,6 +62,8 @@ while prog_active:
 	screen.fill((127,127,127))
 
 	test_anim.draw(screen)
+
+	test_vid.draw(screen)
 
 	pygame.display.flip()
 

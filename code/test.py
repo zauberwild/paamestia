@@ -15,9 +15,9 @@ clock = pygame.time.Clock()
 screen.fill((0,0,255))
 pygame.display.flip()
 
-test_anim = media_lib.SpriteAnim("/src/spritesheet/",96)
+test_anim = media_lib.Animation("/src/spritesheet/")
 
-vid_files = ["/src/color.mov", "/dummy.mk4", "/src/jump.mov", "/src/movie.mp4n", "/dummy.mpg"]
+vid_files = ["/src/color.mov", "/dummy.mk4", "/src/jump.mov", "/src/media/intro/intro.mov", "/dummy.mpg"]
 vid_lengths = [1, 42, 2, 442, 69]
 test_vid = media_lib.Video(vid_files, vid_lengths)
 

@@ -8,14 +8,14 @@ pygame.init()
 
 FPS = 24
 
-screen = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN)
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 pygame.display.set_caption("test")
 clock = pygame.time.Clock()
 
 screen.fill((0,0,255))
 pygame.display.flip()
 
-test_anim = media_lib.Animation("/src/test/")
+test_anim = media_lib.SpriteAnim("/src/spritesheet/",96)
 
 vid_files = ["/src/color.mov", "/dummy.mk4", "/src/jump.mov", "/src/movie.mp4n", "/dummy.mpg"]
 vid_lengths = [1, 42, 2, 442, 69]
@@ -60,6 +60,6 @@ while prog_active:
 
 	pygame.display.flip()
 
-	print(clock.get_fps())
+	#print(clock.get_fps())
 	
 	clock.tick(FPS)

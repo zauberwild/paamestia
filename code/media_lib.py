@@ -165,31 +165,36 @@ class Video:
 		self.frames = 0
 		self.frame_counter = 0
 
-		def start(self, repeat=False):
-			""" starts the video
-			- repeat=False: set True, to play repeatedly
-			"""
-			self.play = True
-			self.chosen_file = randint(0,len(self.files)-1)		# choose a random fil
-			self.cap = cv2.VideoCapture(path + "/intro.mp4")
-			self.frames = self.cap.get(cv2.CAP_PROP_FRAME_COUNT)
-			self.frame_counter = 0
+	def start(self, repeat=False):
+		""" starts the video
+		- repeat=False: set True, to play repeatedly
+		"""
+		self.play = True
+		self.repeat = repeat
+		self.chosen_file = randint(0,len(self.files)-1)		# choose a random file
+		self.cap = cv2.VideoCapture(self.files[self.chosen_file])
+		self.frames = self.cap.get(cv2.CAP_PROP_FRAME_COUNT)
+		self.frame_counter = 0
 
-		def stop(self):
-			""" stop the video
-			"""
-			self.play = False
-		
-		def draw(self, screen):
-			""" draw the video
-			- screen: the pygame screen object
-			"""
+	def stop(self):
+		""" stop the video
+		"""
+		self.play = False
+	
+	def draw(self, screen):
+		""" draw the video
+		- screen: the pygame screen object
+		"""
+		if self.play:
 			ret, frame = self.cap.read()
 			self.frame_counter += 1
 
 			if(self.frame_counter == self.frames):
-				frame_counter = 0
-				self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+				if self.repeat:
+					self.frame_counter = 0
+					self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+				else:
+					self.play = False
 			
 			frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 			frame = frame.swapaxes(0, 1)

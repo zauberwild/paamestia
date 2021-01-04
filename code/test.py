@@ -26,6 +26,8 @@ vid_files = ["/src/intro_small.mp4"]
 vid_lengths = [1, 42, 2, 442, 69]
 test_vid = media_lib.Video(vid_files)
 
+bar = pygame.transform.scale(pygame.image.load(gen_path + "/src/bar.png"), (1280, 720))
+
 prog_active = True
 while prog_active:
 	# input
@@ -64,6 +66,8 @@ while prog_active:
 	test_anim.draw(screen)
 
 	test_vid.draw(screen)
+
+	screen.blit(bar, (0, 0))
 
 	pygame.display.flip()
 

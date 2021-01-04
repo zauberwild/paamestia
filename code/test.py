@@ -11,7 +11,7 @@ FPS = 24
 
 screen = None
 if os_is_linux:
-	screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+	screen = pygame.display.set_mode((1280, 720))
 else:
 	screen = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("test")
@@ -20,11 +20,11 @@ clock = pygame.time.Clock()
 screen.fill((0,0,255))
 pygame.display.flip()
 
-test_anim = media_lib.Animation("/src/test/")
+test_anim = media_lib.Animation("/src/test_klein/")
 
 vid_files = ["/src/color.mov", "/dummy.mk4", "/src/jump.mov", "/src/media/intro/intro.mov", "/dummy.mpg"]
 vid_lengths = [1, 42, 2, 442, 69]
-test_vid = media_lib.Video(vid_files, vid_lengths)
+test_vid = media_lib.Video(vid_files)
 
 prog_active = True
 while prog_active:

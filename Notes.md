@@ -37,3 +37,12 @@ Benötigt:
 
 ---
 
+## Opencv Notizen
+
+### Packages installieren mit:
+
+`pip install opencv-python`
+`pip install numpy==1.19.3`
+
+### misc.
+

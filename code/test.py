@@ -54,10 +54,10 @@ while prog_active:
 				print("### stopped!")
 			if event.key == pygame.K_7:
 				test_vid.start()
-				print("### VLC start")
+				print("### Video start")
 			if event.key == pygame.K_8:
-				test_vid.kill
-				print("### VLC killed!")
+				test_vid.stop()
+				print("### Video stopped!")
 	
 	screen.fill((127,127,127))
 

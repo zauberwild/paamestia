@@ -5,6 +5,8 @@ contains class for animations and videos
 import os							# used to scan for files execute commands from a commandline
 from random import randint			# random function to get random list index in video class
 import pygame, pygame.mixer			# used in Ainmation-Class for displaying sprites and playing audio files
+import cv2 
+import numpy as np 
 from globals import *
 
 class Animation:
@@ -131,14 +133,79 @@ class Animation:
 								self._start_audio(forwards=False)
 						else:
 							self.play = False					# stop
-	
+
+class Video:
+	""" 
+	uses opencv to play videos
+	"""
+
+	def __init__(self, files):
+		""" video class. uses opencv to display a video
+		- files: list of file paths. by pressing play, one will be chosen randomly
+		"""
+		self.files = files
+		for i in range(len(self.files)):		# add the directory path to the file names
+			self.files[i] = gen_path + self.files[i]
+		
+		delete = []								# test if every file can be found
+		for i in range(len(self.files)):
+			if not os.path.isfile(self.files[i]):
+				delete.append(i)				# if not found, save index, to delete late
+		delete.sort(reverse=True)				# sort the list to decreasing values, so the missing indexes won't affect other indexes that need to be deleted
+		for i in delete:						# delete all files that couldn't be found
+			del self.files[i]
+
+
+		self.cap = None			# holds the CideoCapture-object for playing the file
+		
+		# stats / params
+		self.play = False
+		self.chosen_file = 0
+		self.repeat = False
+		self.frames = 0
+		self.frame_counter = 0
+
+		def start(self, repeat=False):
+			""" starts the video
+			- repeat=False: set True, to play repeatedly
+			"""
+			self.play = True
+			self.chosen_file = randint(0,len(self.files)-1)		# choose a random fil
+			self.cap = cv2.VideoCapture(path + "/intro.mp4")
+			self.frames = self.cap.get(cv2.CAP_PROP_FRAME_COUNT)
+			self.frame_counter = 0
+
+		def stop(self):
+			""" stop the video
+			"""
+			self.play = False
+		
+		def draw(self, screen):
+			""" draw the video
+			- screen: the pygame screen object
+			"""
+			ret, frame = self.cap.read()
+			self.frame_counter += 1
+
+			if(self.frame_counter == self.frames):
+				frame_counter = 0
+				self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+			
+			frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+			frame = frame.swapaxes(0, 1)
+			pygame.surfarray.blit_array(screen, frame)
+
+
+
+
 # global variables for video-class:
 vlc_start_linux = "cvlc -f --no-video-title-show --play-and-exit --no-loop <path> &"			# command lines for vlc on various platforms
 vlc_kill_linux = "killall vlc"																	# <path> will be replaced with a path
 vlc_start_windows = "vlc -f --no-video-title-show --play-and-exit --no-loop <path>"
 vlc_kill_windows = "TASKKILL /IM VLC.EXE"
 
-class Video:
+
+class VLCVideo:
 	"""
 	this class can play videos with VLC Media Player by starting it from the command line
 	"""

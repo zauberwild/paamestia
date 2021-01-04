@@ -145,11 +145,12 @@ class SpriteAnim:
 		self.path = gen_path + folder_path
 		self.w, self.h = pygame.display.get_surface().get_size()
 		# Images
-		self.img_path = ""								# save path to the spritesheet
+		self.img_path = []								# save path to the spritesheet
 		for filename in os.listdir(self.path):
 			if filename != "forwards.wav" and filename != "backwards.wav":
-				self.img_path = self.path + filename
-		self.img = None					# will hold the pygame.Surface objects as soon they will be loaded
+				self.img_path.append(self.path + filename)
+		self.img_path.sort()
+		self.img = []					# will hold the pygame.Surface objects as soon they will be loaded
 		self.n_frames = n_frames		# number of frames
 		# Audio
 		self.audio_forwards_path = self.path + "forwards.wav"
@@ -168,22 +169,20 @@ class SpriteAnim:
 		self.forwards = True		# video is played forwards
 		self.repeat = False			# video plays on repeat
 		self.audio_mute = False		# video on mute
-		self.img_y = []
-		for i in range(self.n_frames):
-			self.img_y.append(i*1080)
 
 	def load(self):
 		""" loads the frames as pygame.Surface. please use sparingly to keep RAM clear
 		"""
 		if not self.loaded:
-			self.img = pygame.image.load(self.img_path)
+			for i in self.img_path:
+				self.img.append(pygame.image.load(i))
 			self.loaded = True
 		
 
 	def unload(self):
 		""" unloads the n_frames. use it to clear up ram
 		"""
-		self.img = None
+		self.img.clear()
 		self.loaded = False
 
 	def start(self,audio=True, forwards=True, repeat=False):
@@ -235,7 +234,9 @@ class SpriteAnim:
 		""" draws the video
 		"""
 		if self.play:		# when video plays
-			local_screen.blit(self.img, (0, 0), (0,self.img_y[self.frame],1920,1080))		# draw current frame
+			img_n = int(self.frame / 50)
+			img_y = (self.frame % 50) * 1080
+			local_screen.blit(self.img[img_n], (0, 0), (0,img_y,1920,1080))		# draw current frame
 			
 			if not self.interrupt:		# when not paused
 				if self.forwards:		

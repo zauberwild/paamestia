@@ -4,18 +4,23 @@ PLACEHOLDER for testing
 
 import media_lib
 import pygame
+from globals import *
 pygame.init()
 
 FPS = 24
 
-screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+screen = None
+if os_is_linux:
+	screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+else:
+	screen = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("test")
 clock = pygame.time.Clock()
 
 screen.fill((0,0,255))
 pygame.display.flip()
 
-test_anim = media_lib.Animation("/src/spritesheet/")
+test_anim = media_lib.Animation("/src/test/")
 
 vid_files = ["/src/color.mov", "/dummy.mk4", "/src/jump.mov", "/src/media/intro/intro.mov", "/dummy.mpg"]
 vid_lengths = [1, 42, 2, 442, 69]
@@ -33,7 +38,7 @@ while prog_active:
 				print("### playing")
 				test_anim.start(audio=False)
 			if event.key == pygame.K_2:
-				test_anim.start(forwards=False)
+				test_anim.start(forwards=False, audio = False)
 				print("### playing reverse")
 			if event.key == pygame.K_3:
 				test_anim.load()

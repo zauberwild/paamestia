@@ -4,9 +4,8 @@ contains class for animations and videos
 
 import os							# used to scan for files execute commands from a commandline
 from random import randint			# random function to get random list index in video class
-from pathlib import Path			# used to get the complete path of the working directory
 import pygame, pygame.mixer			# used in Ainmation-Class for displaying sprites and playing audio files
-gen_path = str(Path(__file__).parent.absolute())		# get the complete path of the "code"-directory
+from globals import *
 
 class Animation:
 	"""
@@ -134,7 +133,6 @@ class Animation:
 							self.play = False					# stop
 	
 # global variables for video-class:
-os_is_linux = not os.path.isfile(gen_path + "/src/.windows")		# look for a ".windows" file, which only exists on my Windows-PC
 vlc_start_linux = "cvlc -f --no-video-title-show --play-and-exit --no-loop <path> &"			# command lines for vlc on various platforms
 vlc_kill_linux = "killall vlc"																	# <path> will be replaced with a path
 vlc_start_windows = "vlc -f --no-video-title-show --play-and-exit --no-loop <path>"

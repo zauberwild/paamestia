@@ -150,7 +150,7 @@ class Video:
 		delete = []								# test if every file can be found
 		for i in range(len(self.files)):
 			if not os.path.isfile(self.files[i]):
-				delete.append(i)				# if not found, save index, to delete late
+				delete.append(i)				# if not found, save index, to delete later
 		delete.sort(reverse=True)				# sort the list to decreasing values, so the missing indexes won't affect other indexes that need to be deleted
 		for i in delete:						# delete all files that couldn't be found
 			del self.files[i]

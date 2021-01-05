@@ -71,6 +71,6 @@ while prog_active:
 
 	pygame.display.flip()
 
-	#print(clock.get_fps())
+	print(clock.get_fps())
 	
 	clock.tick(FPS)

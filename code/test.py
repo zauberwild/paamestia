@@ -65,7 +65,7 @@ while prog_active:
 
 	test_vid.draw(screen)
 
-	#screen.blit(bar, (0, 0))
+	screen.blit(bar, (0, 0))
 
 	pygame.display.flip()
 

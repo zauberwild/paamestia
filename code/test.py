@@ -61,7 +61,8 @@ while prog_active:
 				test_vid.stop()
 				print("### Video stopped!")
 	
-	screen.fill((127,127,127))
+	if test_anim.play or test_vid.play:
+		screen.fill((127,127,127))
 
 	test_anim.draw(screen)
 

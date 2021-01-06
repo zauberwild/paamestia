@@ -10,10 +10,7 @@ pygame.init()
 FPS = 24
 
 screen = None
-if os_is_linux:
-	screen = pygame.display.set_mode((1024, 768))
-else:
-	screen = pygame.display.set_mode((800, 600))
+screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("test")
 clock = pygame.time.Clock()
 

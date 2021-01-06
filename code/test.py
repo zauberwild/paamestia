@@ -11,9 +11,9 @@ FPS = 24
 
 screen = None
 if os_is_linux:
-	screen = pygame.display.set_mode((1280, 720))
+	screen = pygame.display.set_mode((1024, 768))
 else:
-	screen = pygame.display.set_mode((1280, 720))
+	screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("test")
 clock = pygame.time.Clock()
 
@@ -22,11 +22,11 @@ pygame.display.flip()
 
 test_anim = media_lib.Animation("/src/test_klein/")
 
-vid_files = ["/src/intro_small.mp4"]
+vid_files = ["/src/intro_7.mp4"]
 vid_lengths = [1, 42, 2, 442, 69]
 test_vid = media_lib.Video(vid_files)
 
-bar = pygame.transform.scale(pygame.image.load(gen_path + "/src/bar.png"), (1280, 720))
+bar = pygame.transform.scale(pygame.image.load(gen_path + "/src/bar.png"), (800, 600))
 
 prog_active = True
 while prog_active:
@@ -61,14 +61,14 @@ while prog_active:
 				test_vid.stop()
 				print("### Video stopped!")
 	
-	if test_anim.play or test_vid.play:
+	if not test_anim.play and not test_vid.play:
 		screen.fill((127,127,127))
 
 	test_anim.draw(screen)
 
 	test_vid.draw(screen)
 
-	screen.blit(bar, (0, 0))
+	#screen.blit(bar, (0, 0))
 
 	pygame.display.flip()
 

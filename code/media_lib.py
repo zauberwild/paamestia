@@ -74,6 +74,7 @@ class Animation:
 			return
 
 		self.play = True			# start video
+		self. interrupt = False		# unpause video, just in case
 		self.forwards = forwards	# set params
 		self.repeat = repeat
 		self.audio_mute = not audio

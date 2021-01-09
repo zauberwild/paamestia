@@ -157,7 +157,7 @@ class Video:
 			del self.files[i]
 
 
-		self.cap = None			# holds the CideoCapture-object for playing the file
+		self.cap = None			# holds the Video-Capture-object for playing the file
 		
 		# stats / params
 		self.play = False

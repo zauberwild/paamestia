@@ -14,3 +14,4 @@ prog_pos = 'i'			# saves current position in program flow
 
 
 show_debug = True		# show debugging information (fps,...)
+debug_text = []			# debug list with all parameters to show. append parameters to this list every loop

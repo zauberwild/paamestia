@@ -5,11 +5,12 @@ contains the recipe-class and drink-class
 class recipe:
 	"""
 	stores and handles the available recipes
+	TODO rework / optimisation
 	"""
 
 	def __init__(self, path):
 		self.path = path
-		self.description
+		self.description = ""
 		self.drinks = []
 		self.vol = []
 		self.loadRecipe()
@@ -20,11 +21,6 @@ class recipe:
 		"""
 		if new_path == "":
 			new_path = self.path
-	
-	def mixRecipe(self):
-		"""
-		ISSUE [i2] needed? 
-		"""
 
 class drink:
 	"""

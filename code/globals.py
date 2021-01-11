@@ -10,4 +10,7 @@ os_is_linux = not path.isfile(gen_path + "/src/.windows")		# look for a ".window
 FPS = 24				# frames per second
 W, H = 800, 600			# width and height of the window
 
-prog_pos = "i"			# saves current position in program flow
+prog_pos = 'i'			# saves current position in program flow
+
+
+show_debug = True		# show debugging information (fps,...)

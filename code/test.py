@@ -20,7 +20,7 @@ pygame.display.flip()
 test_anim = media_lib.Animation("/src/test_klein/")
 
 vid_files = ["/src/intro_7.mp4"]
-vid_lengths = [1, 42, 2, 442, 69]
+vid_lengths = [4]
 test_vid = media_lib.Video(vid_files)
 
 bar = pygame.transform.scale(pygame.image.load(gen_path + "/src/bar.png"), (800, 600))
@@ -69,6 +69,6 @@ while prog_active:
 
 	pygame.display.flip()
 
-	print(clock.get_fps())
+	#print(clock.get_fps())
 	
 	clock.tick(FPS)

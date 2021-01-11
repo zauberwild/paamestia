@@ -6,6 +6,8 @@ import media_lib
 import pygame
 from globals import *
 pygame.init()
+pygame.font.init()
+myfont = pygame.font.SysFont('Calibri', 30)
 
 FPS = 24
 
@@ -66,6 +68,10 @@ while prog_active:
 	test_vid.draw(screen)
 
 	screen.blit(bar, (0, 0))
+
+	fps = str(clock.get_fps())
+	textsur = myfont.render(fps[0:6], False, (0,255,0))
+	screen.blit(textsur, (0,0))
 
 	pygame.display.flip()
 

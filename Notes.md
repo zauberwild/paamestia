@@ -18,7 +18,7 @@ Enden des Videos / VLC beenden:
 ### Befehle (Windows):
 
 Starten des Videos:  
-`C:"\Program Files\VideoLAN\VLC\vlc.exe" -f --no-video-title-show --play-and-exit ./<path>`
+`C:"\Program Files\VideoLAN\VLC\vlc.exe" --no-video-title-show --play-and-exit ./<path>`
 
 Enden des videos / VLC beenden:
 

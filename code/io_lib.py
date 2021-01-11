@@ -1,6 +1,5 @@
 """
 handles input / output
-PLACEHOLDER
 """
 
 class LED_PH:

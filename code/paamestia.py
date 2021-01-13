@@ -16,16 +16,7 @@ pygame.mixer.init()
 pygame.freetype.init()
 debug_font = pygame.freetype.Font(gen_path + "/src/fonts/CamingoCode-Regular.ttf", 30)
 
-# setting the window up
-screen = None
-if os_is_linux:
-	screen = pygame.display.set_mode((W,H), pygame.FULLSCREEN)
-else:
-	screen = pygame.display.set_mode((W,H))
-
-pygame.display.set_caption("paamestia_main")
-clock = pygame.time.Clock()
-
+# DEL fill screen, can be deleted, when project done
 screen.fill((127,127,127))
 pygame.display.flip()
 

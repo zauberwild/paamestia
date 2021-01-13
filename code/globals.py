@@ -15,3 +15,14 @@ prog_pos = 'i'			# saves current position in program flow
 
 show_debug = True		# show debugging information (fps,...)
 debug_text = []			# debug list with all parameters to show. append parameters to this list every loop
+
+# setting the window up
+import pygame
+screen = None
+if os_is_linux:
+	screen = pygame.display.set_mode((W,H), pygame.FULLSCREEN)
+else:
+	screen = pygame.display.set_mode((W,H))
+
+pygame.display.set_caption("paamestia_main")
+clock = pygame.time.Clock()

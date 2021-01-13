@@ -63,9 +63,9 @@ while prog_active:
 	if not test_anim.play and not test_vid.play:
 		screen.fill((127,127,127))
 
-	test_anim.draw(screen)
+	test_anim.draw()
 
-	test_vid.draw(screen)
+	test_vid.draw()
 
 	screen.blit(bar, (0, 0))
 

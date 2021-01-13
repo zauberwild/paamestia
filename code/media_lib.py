@@ -109,11 +109,11 @@ class Animation:
 		"""
 		self.play = False
 
-	def draw(self, local_screen):
+	def draw(self):
 		""" draws the video
 		"""
 		if self.play:		# when video plays
-			local_screen.blit(self.img[self.frame], (0, 0))		# draw current frame
+			screen.blit(self.img[self.frame], (0, 0))		# draw current frame
 			
 			if not self.interrupt:		# when not paused
 				if self.forwards:		
@@ -182,7 +182,7 @@ class Video:
 		"""
 		self.play = False
 	
-	def draw(self, screen):
+	def draw(self):
 		""" draw the video
 		- screen: the pygame screen object
 		"""
@@ -200,8 +200,6 @@ class Video:
 			frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 			frame = frame.swapaxes(0, 1)
 			pygame.surfarray.blit_array(screen, frame)
-
-
 
 
 # global variables for video-class:

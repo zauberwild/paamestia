@@ -31,8 +31,8 @@ https://www.amazon.de/Gebildet-Druckknopfschalter-Autotrompete-Tischlampe-Haust%
 9€
 
 ## Trafo
-https://www.amazon.de/Netzteil-Netzadapter-Transformator-Kaltger%C3%A4testecker-Streifen/dp/B07FNMKTBL/ref=pd_bxgy_2/261-4391009-4390455?_encoding=UTF8&pd_rd_i=B07FNMKTBL&pd_rd_r=5facb524-3c42-4466-b2ca-3c239e0d21de&pd_rd_w=tGAGx&pd_rd_wg=eKUzg&pf_rd_p=4490d326-3239-499b-8c8a-0dd8d6ad582a&pf_rd_r=R4BM5MCHZ24WEFDZM462&refRID=R4BM5MCHZ24WEFDZM462&th=1
-10€
+https://www.amazon.de/Netzteil-Transformator-Universelles-AC110-240V-Geeignet/dp/B0871TVVRR/ref=pd_sbs_201_1/261-4391009-4390455?_encoding=UTF8&pd_rd_i=B0871TVVRR&pd_rd_r=9c307cf3-26e9-4868-b3f7-a5e2930114ac&pd_rd_w=Qgvps&pd_rd_wg=NaYdi&pf_rd_p=ad79fb78-2eb6-4fd8-b228-cb6e6b4589d9&pf_rd_r=7Q7QPZ3VQS7GJDGTN35V&psc=1&refRID=7Q7QPZ3VQS7GJDGTN35V
+12€
 
 ## Monitor
 von Friedrichs

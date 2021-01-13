@@ -10,7 +10,7 @@ import io_lib
 
 """ ### ### INTRO / MAIN MENU ### ### """
 def intro():
-	pass
+	screen.fill((127,127,127))
 
 def main_menu():
 	pass

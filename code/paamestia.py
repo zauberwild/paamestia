@@ -14,10 +14,10 @@ pygame.mixer.pre_init(44100, -16, 1, 512)
 pygame.init()
 pygame.mixer.init()
 pygame.freetype.init()
-debug_font = pygame.freetype.Font(gen_path + "/src/fonts/CamingoCode-Regular.ttf", 30)
+debug_font = pygame.freetype.Font(gen_path + "/src/fonts/CamingoCode-Regular.ttf", 24)
 
 # DEL fill screen, can be deleted, when project done
-screen.fill((127,127,127))
+screen.fill((0,0,127))
 pygame.display.flip()
 
 # objects creation
@@ -63,10 +63,11 @@ while prog_active:
 		ui.settings()
 
 	else:
-		text = ["ERROR", "invalid prog_pos: " + str(prog_pos), "reseting to 'm'"]
+		text = ["ERROR", "invalid prog_pos: " + str(prog_pos), "resetting to 'm'"]
 		screen.fill((0,0,0))
 		h = 0
 		for t in text:
+			print(t)
 			debug_font.render_to(screen, (0,h), t, (255,0,0))
 			h += 32
 		prog_pos = 'm'

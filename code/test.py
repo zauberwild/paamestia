@@ -6,6 +6,8 @@ import media_lib
 import pygame
 from globals import *
 pygame.init()
+pygame.mixer.pre_init(44100, -16, 1, 512)
+pygame.mixer.init()
 pygame.font.init()
 myfont = pygame.font.SysFont('Calibri', 30)
 

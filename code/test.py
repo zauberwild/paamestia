@@ -27,7 +27,7 @@ vid_files = ["/src/intro_7.mp4"]
 vid_lengths = [4]
 test_vid = media_lib.Video(vid_files)
 
-bar = pygame.transform.scale(pygame.image.load(gen_path + "/src/bar.png"), (800, 600))
+bar = pygame.transform.scale(pygame.image.load(gen_path + "/src/bar_xs.png"), (800, 600))
 
 prog_active = True
 while prog_active:

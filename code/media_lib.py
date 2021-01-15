@@ -2,11 +2,11 @@
 contains class for animations and videos
 """
 
-import os							# used to scan for files execute commands from a commandline
-from random import randint			# random function to get random list index in video class
-import pygame, pygame.mixer			# used in Ainmation-Class for displaying sprites and playing audio files
-import cv2 
-import numpy as np 
+import os						# used to scan for files and to execute commands from a commandline
+from random import randint		# random function to get random list index in video class
+import pygame, pygame.mixer		# used in Ainmation-Class for displaying sprites and playing audio files
+import cv2 						# used in Video-Class for displaying videos
+import numpy as np 				# used by opencv
 from globals import *
 
 class Animation:

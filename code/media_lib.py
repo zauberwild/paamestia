@@ -70,7 +70,7 @@ class Animation:
 		- repeat=False: set True, to endlessly repeat the video
 			(can be stopped with stop())
 		"""
-		if self.n_frames == 0:		# interrupt when images are not loaded
+		if self.loaded == False:		# interrupt when images are not loaded
 			return
 
 		self.play = True			# start video
@@ -120,7 +120,7 @@ class Animation:
 					self.frame += 1								# advance frame
 					if self.frame >= self.n_frames:				# if at the end
 						if self.repeat:							# if repeat on
-							if not self.audio_mute:					# start over
+							if not self.audio_mute:				# start over
 								self._start_audio()
 							self.frame = 0	
 						else:
@@ -134,6 +134,7 @@ class Animation:
 								self._start_audio(forwards=False)
 						else:
 							self.play = False					# stop
+
 
 class Video:
 	""" 
@@ -207,7 +208,6 @@ vlc_start_linux = "cvlc -f --no-video-title-show --play-and-exit --no-loop <path
 vlc_kill_linux = "killall vlc"																	# <path> will be replaced with a path
 vlc_start_windows = "vlc --no-video-title-show --play-and-exit --no-loop <path>"
 vlc_kill_windows = "TASKKILL /IM VLC.EXE"
-
 
 class VLCVideo:
 	"""

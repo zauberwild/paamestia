@@ -41,7 +41,7 @@ Benötigt:
 
 ### Packages installieren mit:
 
-`pip install opencv-python`
+` pip install opencv-python opencv-python-headless`
 `pip install numpy==1.19.3`
 
 ### misc.

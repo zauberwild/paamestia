@@ -5,7 +5,7 @@ this file stores all global variables and constants
 from pathlib import Path								# used to get the complete path of the working directory
 gen_path = str(Path(__file__).parent.absolute())		# get the complete path of the "code"-directory
 from os import path											# used to get the complete path of the working directory
-os_is_linux = not path.isfile(gen_path + "/src/.windows")		# look for a ".windows" file, which only exists on my Windows-PC
+os_is_linux = not path.isfile(gen_path + "/src/.windows")		# looks for a ".windows" file, which only exists on my Windows-PC
 
 prog_active = True		# set to False to end program
 

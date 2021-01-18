@@ -1,13 +1,49 @@
 """
-contains class for animations and videos
+contains class for graphics, animations and videos
 """
 
 import os						# used to scan for files and to execute commands from a commandline
 from random import randint		# random function to get random list index in video class
-import pygame, pygame.mixer		# used in Ainmation-Class for displaying sprites and playing audio files
+import pygame, pygame.mixer		# used in Animation-Class for displaying sprites and playing audio files
 import cv2 						# used in Video-Class for displaying videos
 import numpy as np 				# used by opencv
-from globals import *
+import globals as gl
+
+class Image:
+	""" class for drawing images """
+
+	def __init__(self, path, x, y, width, height, direct_load=False):
+		""" draw single sprites 
+		- path: path to file
+		- x: x-position
+		- y: y-position
+		- width: width of image
+		- height: height of image
+		- direct_load=False: set True, when the image should directly be loaded
+		"""
+		self.path = gl.gen_path + path		# save given params
+		self.x, self.y = x, y
+		self.width, self.height = width, height
+
+		# additional parameters
+		self.show = False		# 'turn' image on and off
+		self.img = None			# will hold the pygame.Surface object
+
+		if direct_load:
+			self.load_image()
+	
+	def load_image(self):
+		self.img = pygame.transform.scale(pygame.image.load(self.path), (self.width, self.height))
+	
+	def unload_image(self):
+		self.img = None
+	
+	def draw(self):
+		"""
+		draw the image
+		"""
+		gl.screen.blit(self.img, (self.x, self.y))		# draw image
+
 
 class Animation:
 	"""
@@ -16,9 +52,9 @@ class Animation:
 
 	def __init__(self, folder_path):
 		""" animation class. uses sprites do display a video
-		- video_path: path to media folder
+		- folder_path: path to media folder
 		"""
-		self.path = gen_path + folder_path
+		self.path = gl.gen_path + folder_path
 		self.w, self.h = pygame.display.get_surface().get_size()
 		# Images
 		self.img_path = []								# save all paths to the image files
@@ -113,7 +149,7 @@ class Animation:
 		""" draws the video
 		"""
 		if self.play:		# when video plays
-			screen.blit(self.img[self.frame], (0, 0))		# draw current frame
+			gl.screen.blit(self.img[self.frame], (0, 0))		# draw current frame
 			
 			if not self.interrupt:		# when not paused
 				if self.forwards:		
@@ -141,24 +177,17 @@ class Video:
 	uses opencv to play videos
 	"""
 
-	def __init__(self, files):
+	def __init__(self, file, audio_file):
 		""" video class. uses opencv to display a video
 		- files: list of file paths. by pressing play, one will be chosen randomly
 		"""
-		self.files = files
-		for i in range(len(self.files)):		# add the directory path to the file names
-			self.files[i] = gen_path + self.files[i]
-		
-		delete = []								# test if every file can be found
-		for i in range(len(self.files)):
-			if not os.path.isfile(self.files[i]):
-				delete.append(i)				# if not found, save index, to delete later
-		delete.sort(reverse=True)				# sort the list to decreasing values, so the missing indexes won't affect other indexes that need to be deleted
-		for i in delete:						# delete all files that couldn't be found
-			del self.files[i]
+		self.file = gl.gen_path + file					# add the directory path to the file names
+		self.audio_file = gl.gen_path + audio_file
 
-
-		self.cap = None			# holds the Video-Capture-object for playing the file
+		self.cap = None									# holds the Video-Capture-object for playing the file
+		self.audio = None								# holds pygame.mixer.Sound object
+		if os.path.isfile(self.audio_file):				# test if audio file is there
+			self.audio = pygame.mixer.Sound(self.audio_file)	
 		
 		# stats / params
 		self.play = False
@@ -173,10 +202,14 @@ class Video:
 		"""
 		self.play = True
 		self.repeat = repeat
-		self.chosen_file = randint(0,len(self.files)-1)		# choose a random file
-		self.cap = cv2.VideoCapture(self.files[self.chosen_file])
+		self.cap = cv2.VideoCapture(self.file)
 		self.frames = self.cap.get(cv2.CAP_PROP_FRAME_COUNT)
 		self.frame_counter = 0
+		self._start_audio()
+	
+	def _start_audio(self):
+		""" plays the audio file """
+		pygame.mixer.Sound.play(self.audio)			# start audio
 
 	def stop(self):
 		""" stop the video
@@ -191,16 +224,20 @@ class Video:
 			ret, frame = self.cap.read()
 			self.frame_counter += 1
 
-			if(self.frame_counter == self.frames):
+			if(self.test_for_last_frame()):
 				if self.repeat:
 					self.frame_counter = 0
 					self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+					self._start_audio()
 				else:
 					self.play = False
 			
-			frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+			frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
 			frame = frame.swapaxes(0, 1)
-			pygame.surfarray.blit_array(screen, frame)
+			pygame.surfarray.blit_array(gl.screen, frame)
+	
+	def test_for_last_frame(self):
+		return self.frame_counter == self.frames
 
 
 # global variables for video-class:
@@ -223,7 +260,7 @@ class VLCVideo:
 		self.length = length
 
 		for i in range(len(self.files)):		# add the directory path to the file names
-			self.files[i] = gen_path + self.files[i]
+			self.files[i] = gl.gen_path + self.files[i]
 
 		delete = []								# test if every file can be found
 		for i in range(len(self.files)):
@@ -243,7 +280,7 @@ class VLCVideo:
 		""" start the video
 		"""
 		commandline = ""		# prepare the commandline
-		if os_is_linux:
+		if gl.os_is_linux:
 			commandline = vlc_start_linux
 		else:
 			commandline = vlc_start_windows
@@ -255,7 +292,7 @@ class VLCVideo:
 		""" kill VLC process. might kill all running VLC-processes
 		"""
 		commandline = ""
-		if os_is_linux:
+		if gl.os_is_linux:
 			commandline = vlc_kill_linux
 		else:
 			commandline = vlc_kill_windows

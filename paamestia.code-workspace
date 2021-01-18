@@ -5,7 +5,7 @@
 		}
 	],
 	"settings": {
-		"todo-tree.tree.showCountsInTree": true
+		"todo-tree.tree.showCountsInTree": true,
 		"python.analysis.extraPaths": [
             "./code"
         ]

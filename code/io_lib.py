@@ -11,7 +11,7 @@ def keyboard_input():
 
 	pygame_events = pygame.event.get()			# save all current events
 
-	for event in pygame_events:
+	for event in pygame_events:					# check for keyboard input
 			# closing window / exit program
 			if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
 				gl.prog_active = False
@@ -19,72 +19,76 @@ def keyboard_input():
 				# debug information
 				if event.key == pygame.K_d:
 					gl.show_debug = not gl.show_debug
+				# return to intro
+				if event.key == pygame.K_i:
+					gl.prog_pos = 'i'
 
 """ ### ### button input ### ### """
+if gl.os_is_linux:
+	from gpiozero import Button, LED
+
 UP, DOWN, LEFT, RIGHT, NEXT, BACK = 0, 1, 2, 3, 4, 5		# NOTE Buttons: set corresponding pins here
 def readInput(input):
 	""" read signal from input. returns bool
 	input: chosen input [UP, DOWN, LEFT, RIGHT, NEXT, BACK] or any other gpio pin
 	"""
 	global UP, DOWN, LEFT, RIGHT, NEXT, BACK, pygame_events
-	ret = False				# this variable will be set True when asked button is pressed. Otherwise it won't change
+	is_pressed = False				# this variable will be set True when asked button is pressed. Otherwise it won't change
 
 	if gl.os_is_linux:		# for the raspberry pi
-		button = Button(input)
+		button = Button(input)		# read asked button
 		if button.is_pressed:
-			ret = True
-	else:			# for the windows machine
+			is_pressed = True
+	else:			# for windows / developing
 		# keyboard input
 		for event in pygame_events:
 			if event.type == pygame.KEYDOWN:
-				keys = [(UP, pygame.K_UP), (DOWN, pygame.K_DOWN), (LEFT, pygame.K_LEFT), (RIGHT, pygame.K_RIGHT), (NEXT, pygame.K_RETURN), (BACK, pygame.K_DELETE)]		# list of possible inputs and matching keys on keyboard
+				keys = [(UP, pygame.K_UP), (DOWN, pygame.K_DOWN), (LEFT, pygame.K_LEFT), (RIGHT, pygame.K_RIGHT), 
+						(NEXT, pygame.K_RETURN), (BACK, pygame.K_DELETE)]		# list of possible inputs and matching keys on keyboard
 				for key in keys:					# loop through and check if key has been pressed
 					if input == key[0] and event.key == key[1]:
-						ret = True
+						is_pressed = True
 	
-	return ret
+	return is_pressed
 
 """ ### ### output ### ### """
-if gl.os_is_linux:
-	from gpiozero import Button, LED
-else:
+if not gl.os_is_linux:
 	import serial
-	PORT, BAUD = "COM4", 9600		# settings for serial comm.
+	PORT, BAUD = "COM4", 9600		# NOTE settings for serial comm.
 	ser = serial.Serial(PORT, BAUD)
 
-HIGH, LOW = 1, 0
-VALVES = [0, 1, 2, 3, 42, 5, 69]			# NOTE Valves: set corresponding pins here ([0] being valve for water, then going from left to right)
-PUMP = 420									# NOTE Pump: set gpio pin for pump here
+VALVES = [0, 1, 2, 3, 42, 5, 69]			# NOTE Valves: set corresponding pins here ([0] is the valve for water, then going from left to right)
+PUMP = 420									# 		 Pump: set gpio pin for pump here
 valves_state = [False, False, False, False, False, False, False]			# states of the pins
 pump_state = False
 
 def writeOutput(out, state):
 	""" set output
 	out: pin to set [VALVES[0:7], PUMP] or any other gpio pin
-	state: state [HIGH / True / 1, LOW / False / 0]
+	state: state [True / 1, False / 0]
 	"""
 	global HIGH, LOW, VALVES, PUMP, valves_state, pump_state
 
 	if gl.os_is_linux:			# for the raspberry pi
-		led = LED(out)
+		led = LED(out)			# turn output on when state == True/1, turn off when state == False/0
 		if state:
 			led.on()
 		else:
 			led.off()
+
 	else:						# for the windows machine
 		text = ""		# text to send to arduino. the text should contain two digits, the first one for the valve (0-7) or pump (8).
-						# THe second is the state (1 = on, 0 = off).
-
-		# set valve
+						# The second is the state (1 = on, 0 = off).
+		# set valve / output
 		for idx, valve in enumerate(VALVES):
 			if out == valve:
 				text = str(idx)
 		if out == PUMP:
 			text = "7"
-		text += str(int(state)) + '\n'		# set state
-		ser.write(text.encode('utf-8'))
+		text += str(int(state)) + '\n'		# add state and newline carrier
+		ser.write(text.encode('utf-8'))		# send text
 	
-	# refresh the states
+	# keep the saved states up-to-date
 	for idx, valve in enumerate(VALVES):
 		if out == valve:
 			valves_state[idx] = state

@@ -2,14 +2,56 @@
 this file include all methods for the user interface
 """
 
-import pygame				# ISSUE [i7] drawing single sprites: in method or as class in medialib ?
 import globals as gl
 import media_lib
 import drinks_lib
 import io_lib as io
 
+""" ### ### SETUP / LOOP ### ### """
+""" actions that need to be executed once on startup are here 
+	This includes object creation, reading files in, etc.
+"""
+
+# intro
+introduction_vid = media_lib.Video("/src/media/intro/intro.mp4", "/src/media/intro/audio.wav")
+
+""" EOF SETUP """
+
+def loop():
+	""" actions that need to be executed every loop (independently from prog_pos are here)
+		this method will be called before any other actions in the main loop
+	"""
+	# keyboard input
+	io.keyboard_input()
+
+	# debug information about input and output
+	if not gl.prog_pos == 'i':
+		i_s = "I: "
+		for i in io.valves_state:
+			i_s += str(int(i)) + "; "
+		i_s += str(int(io.pump_state))
+		gl.debug_text.append(i_s)
+		i_s = "O: up: " + str(int(io.readInput(io.UP))) + "; down: " + str(int(io.readInput(io.DOWN))) + "; left: " + str(int(io.readInput(io.LEFT))) + "; right: " + str(int(io.readInput(io.RIGHT))) + ";"
+		gl.debug_text.append(i_s)
+		i_s = "O: next: " + str(int(io.readInput(io.NEXT))) + "; back: " + str(int(io.readInput(io.BACK)))
+		gl.debug_text.append(i_s)
+
 """ ### ### INTRO / MAIN MENU ### ### """
+intro_active = False
 def intro():
+	global intro_active, introduction_vid
+
+	if intro_active == False:
+		intro_active = True
+		introduction_vid.start()			# start intro
+	
+	introduction_vid.draw()				# draw intro
+
+	if introduction_vid.test_for_last_frame():			# test if intro is ending
+		intro_active = False
+		gl.prog_pos = 'm'
+
+def main_menu():
 	gl.screen.fill((127,127,127))
 	if io.readInput(io.UP):
 		io.writeOutput(io.VALVES[1], not io.valves_state[1])
@@ -20,12 +62,9 @@ def intro():
 	if io.readInput(io.RIGHT):
 		io.writeOutput(io.VALVES[4], not io.valves_state[4])
 	if io.readInput(io.NEXT):
-		io.writeOutput(io.VALVES[0], 1)
+		io.writeOutput(io.PUMP, 1)
 	if io.readInput(io.BACK):
-		io.writeOutput(io.VALVES[0], 0)
-
-def main_menu():
-	pass
+		io.writeOutput(io.PUMP, 0)
 
 """ ### ### FREE MIXING ### ### """
 def free_transition():
@@ -51,4 +90,8 @@ def recipe_output():
 
 """ ### ### SETTINGS ### ### """
 def settings():
+	pass
+
+""" ### SHUTDOWN ### """
+def shutdown():
 	pass

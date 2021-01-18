@@ -23,11 +23,10 @@ pygame.display.flip()
 
 test_anim = media_lib.Animation("/src/test_klein/")
 
-vid_files = ["/src/intro_7.mp4"]
-vid_lengths = [4]
-test_vid = media_lib.Video(vid_files)
+vid_files = "/src/intro_7.mp4"
+test_vid = media_lib.Video(vid_files, "/src/test/forwards.wav")
 
-bar = pygame.transform.scale(pygame.image.load(gen_path + "/src/bar_xs.png"), (800, 600))
+bar = media_lib.Image("/src/bar_cut.png", 0, 300, 800, 300, direct_load=True)
 
 prog_active = True
 while prog_active:
@@ -69,7 +68,7 @@ while prog_active:
 
 	test_vid.draw()
 
-	screen.blit(bar, (0, 0))
+	bar.draw()
 
 	fps = str(clock.get_fps())
 	textsur = myfont.render(fps[0:6], False, (0,255,0))

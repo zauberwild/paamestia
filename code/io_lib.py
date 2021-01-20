@@ -45,12 +45,12 @@ def update_input():
 
 	# read current state
 	if gl.os_is_linux:				# for the raspberry pi
-		up_state	= UP_BT.is_pressed
-		down_state	= DOWN_BT.is_pressed
-		left_state	= LEFT_BT.is_pressed
-		right_state	= RIGHT_BT.is_pressed
-		next_state	= NEXT_BT.is_pressed
-		back_state	= BACK_BT.is_pressed
+		up_state	= not UP_BT.is_pressed
+		down_state	= not DOWN_BT.is_pressed
+		left_state	= not LEFT_BT.is_pressed
+		right_state	= not RIGHT_BT.is_pressed
+		next_state	= not NEXT_BT.is_pressed
+		back_state	= not BACK_BT.is_pressed
 	else:							# for windows / developing
 		for event in pygame_events:
 			if event.type == pygame.KEYDOWN or event.type == pygame.KEYUP:

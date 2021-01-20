@@ -62,7 +62,7 @@ if not gl.os_is_linux:
 	PORT, BAUD = "COM4", 9600		# NOTE settings for serial comm.
 	ser = serial.Serial(PORT, BAUD)
 
-VALVES = [11, 0, 4, 17, 27, 22, 10]			# NOTE Valves: set corresponding pins here ([0] is the valve for water, then going from left to right)
+VALVES = [11, 0, 26, 19, 27, 22, 10]			# NOTE Valves: set corresponding pins here ([0] is the valve for water, then going from left to right)
 PUMP = 9	
 if gl.os_is_linux:									# 		 Pump: set gpio pin for pump here
 	VALVES_OUT = [LED(VALVES[0]), LED(VALVES[1]), LED(VALVES[2]), LED(VALVES[3]), LED(VALVES[4]), LED(VALVES[5]), LED(VALVES[6])]

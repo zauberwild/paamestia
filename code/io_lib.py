@@ -63,7 +63,10 @@ if not gl.os_is_linux:
 	ser = serial.Serial(PORT, BAUD)
 
 VALVES = [11, 0, 4, 17, 27, 22, 10]			# NOTE Valves: set corresponding pins here ([0] is the valve for water, then going from left to right)
-PUMP = 9									# 		 Pump: set gpio pin for pump here
+PUMP = 9	
+if gl.os_is_linux:									# 		 Pump: set gpio pin for pump here
+	VALVES_OUT = [LED(VALVES[0]), LED(VALVES[1]), LED(VALVES[2]), LED(VALVES[3]), LED(VALVES[4]), LED(VALVES[5]), LED(VALVES[6])]
+	PUMP_OUT = LED(PUMP)
 valves_state = [False, False, False, False, False, False, False]			# states of the pins
 pump_state = False
 
@@ -73,13 +76,18 @@ def writeOutput(out, state):
 	state: state [True / 1, False / 0]
 	"""
 	global HIGH, LOW, VALVES, PUMP, valves_state, pump_state
+	global VALVES_OUT, PUMP_OUT
 
 	if gl.os_is_linux:			# for the raspberry pi
-		led = LED(out)			# turn output on when state == True/1, turn off when state == False/0
-		if state:
-			led.on()
-		else:
-			led.off()
+		keys = [(VALVES[0], VALVES_OUT[0]), (VALVES[1], VALVES_OUT[1]), (VALVES[2], VALVES_OUT[2]),
+				(VALVES[3], VALVES_OUT[3]), (VALVES[4], VALVES_OUT[4]), (VALVES[5], VALVES_OUT[5]),
+				(VALVES[6], VALVES_OUT[6]), (PUMP, PUMP_OUT)]		# list of possible outputs and matching led objects
+		for key in keys:
+			if key[0] == out:
+				if state:
+					key[1].on()
+				else:
+					key[1].off()
 
 	else:						# for the windows machine
 		text = ""		# text to send to arduino. the text should contain two digits, the first one for the valve (0-7) or pump (8).

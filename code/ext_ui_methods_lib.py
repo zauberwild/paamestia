@@ -39,7 +39,7 @@ def loop():
 """ ### ### INTRO / MAIN MENU ### ### """
 intro_active = False
 def intro():
-	gl.prog_pos = 'm'		# DEL when intro needed
+	#gl.prog_pos = 'm'		# DEL when intro needed
 
 	global intro_active, introduction_vid
 

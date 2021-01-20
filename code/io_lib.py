@@ -24,21 +24,26 @@ def keyboard_input():
 					gl.prog_pos = 'i'
 
 """ ### ### button input ### ### """
-if gl.os_is_linux:
-	from gpiozero import Button, LED
-
 UP, DOWN, LEFT, RIGHT, NEXT, BACK = 0, 1, 2, 3, 4, 5		# NOTE Buttons: set corresponding pins here
+
+if gl.os_is_linux:								# create button objects to read gpio pins
+	from gpiozero import Button, LED
+	UP_BT, DOWN_BT, LEFT_BT, RIGHT_BT, NEXT_BT, BACK_BT = Button(UP), Button(DOWN), Button(LEFT), Button(RIGHT), Button(NEXT), Button(BACK)
 def readInput(input):
 	""" read signal from input. returns bool
 	input: chosen input [UP, DOWN, LEFT, RIGHT, NEXT, BACK] or any other gpio pin
 	"""
 	global UP, DOWN, LEFT, RIGHT, NEXT, BACK, pygame_events
+	global UP_BT, DOWN_BT, LEFT_BT, RIGHT_BT, NEXT_BT, BACK_BT
 	is_pressed = False				# this variable will be set True when asked button is pressed. Otherwise it won't change
 
 	if gl.os_is_linux:		# for the raspberry pi
-		button = Button(input)		# read asked button
-		if button.is_pressed:
-			is_pressed = True
+		keys = [(UP, UP_BT), (DOWN, DOWN_BT), (LEFT, LEFT_BT), (RIGHT, RIGHT_BT), 
+				(NEXT, NEXT_BT), (BACK, BACK_BT)]		# list of possible inputs and matching button objects
+		for key in keys:								# loop through and check if button has been pressed
+			if input == key[0]:
+				is_pressed = key[1].is_pressed()
+
 	else:			# for windows / developing
 		# keyboard input
 		for event in pygame_events:

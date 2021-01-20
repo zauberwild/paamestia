@@ -66,7 +66,8 @@ def main_menu():
 	if io.readInput(io.NEXT):
 		io.writeOutput(io.PUMP, 1)
 	if io.readInput(io.BACK):
-		io.writeOutput(io.PUMP, 0)
+		gl.prog_active = False
+		#io.writeOutput(io.PUMP, 0)
 
 """ ### ### FREE MIXING ### ### """
 def free_transition():

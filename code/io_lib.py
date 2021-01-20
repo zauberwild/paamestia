@@ -42,7 +42,7 @@ def readInput(input):
 				(NEXT, NEXT_BT), (BACK, BACK_BT)]		# list of possible inputs and matching button objects
 		for key in keys:								# loop through and check if button has been pressed
 			if input == key[0]:
-				is_pressed = key[1].is_pressed
+				is_pressed = not key[1].is_pressed		# invert reading, because pins are pulldown?
 
 	else:			# for windows / developing
 		# keyboard input

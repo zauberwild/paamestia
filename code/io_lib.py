@@ -25,34 +25,58 @@ def keyboard_input():
 
 """ ### ### button input ### ### """
 UP, DOWN, LEFT, RIGHT, NEXT, BACK = 14, 15, 21, 23, 24, 25		# NOTE Buttons: set corresponding pins here
+up_state, down_state, left_state, right_state, next_state, back_state = False, False, False, False, False, False			# saves pin state
+up_state_prev, down_state_prev, left_state_prev, right_state_prev, next_state_prev, back_state_prev = False, False, False, False, False, False			# saves previous pin state
 
 if gl.os_is_linux:								# create button objects to read gpio pins
-	from gpiozero import Button, LED
+	from gpiozero import Button
 	UP_BT, DOWN_BT, LEFT_BT, RIGHT_BT, NEXT_BT, BACK_BT = Button(UP), Button(DOWN), Button(LEFT), Button(RIGHT), Button(NEXT), Button(BACK)
+
+def update_input():
+	""" update all input """
+	global UP, DOWN, LEFT, RIGHT, NEXT, BACK, pygame_events
+	global up_state, down_state, left_state, right_state, next_state, back_state
+	global up_state_prev, down_state_prev, left_state_prev, right_state_prev, next_state_prev, back_state_prev
+	if gl.os_is_linux:
+		global UP_BT, DOWN_BT, LEFT_BT, RIGHT_BT, NEXT_BT, BACK_BT
+	
+	# refresh previous states
+	up_state_prev, down_state_prev, left_state_prev, right_state_prev, next_state_prev, back_state_prev = up_state, down_state, left_state, right_state, next_state, back_state
+
+	# read current state
+	if gl.os_is_linux:				# for the raspberry pi
+		up_state	= UP_BT.is_pressed
+		down_state	= DOWN_BT.is_pressed
+		left_state	= LEFT_BT.is_pressed
+		right_state	= RIGHT_BT.is_pressed
+		next_state	= NEXT_BT.is_pressed
+		back_state	= BACK_BT.is_pressed
+	else:							# for windows / developing
+		for event in pygame_events:
+			if event.type == pygame.KEYDOWN or event.type == pygame.KEYUP:
+				if(event.key == pygame.K_UP):		up_state 	= not up_state
+				if(event.key == pygame.K_DOWN):		down_state 	= not down_state
+				if(event.key == pygame.K_LEFT):		left_state 	= not left_state
+				if(event.key == pygame.K_RIGHT):	right_state = not right_state
+				if(event.key == pygame.K_RETURN):	next_state 	= not next_state
+				if(event.key == pygame.K_DELETE):	back_state 	= not back_state
+
 def readInput(input):
 	""" read signal from input. returns bool
 	input: chosen input [UP, DOWN, LEFT, RIGHT, NEXT, BACK] or any other gpio pin
 	"""
-	global UP, DOWN, LEFT, RIGHT, NEXT, BACK, pygame_events
-	global UP_BT, DOWN_BT, LEFT_BT, RIGHT_BT, NEXT_BT, BACK_BT
+	global UP, DOWN, LEFT, RIGHT, NEXT, BACK
+	global up_state, down_state, left_state, right_state, next_state, back_state
+	global up_state_prev, down_state_prev, left_state_prev, right_state_prev, next_state_prev, back_state_prev
+	keys = [(UP, up_state, up_state_prev), (DOWN, down_state, down_state_prev),
+			(LEFT, left_state, left_state_prev), (RIGHT, right_state, right_state_prev),
+			(NEXT, next_state, next_state_prev), (BACK, back_state, back_state_prev)]			# list of possible inputs and matching states
+
 	is_pressed = False				# this variable will be set True when asked button is pressed. Otherwise it won't change
 
-	if gl.os_is_linux:		# for the raspberry pi
-		keys = [(UP, UP_BT), (DOWN, DOWN_BT), (LEFT, LEFT_BT), (RIGHT, RIGHT_BT), 
-				(NEXT, NEXT_BT), (BACK, BACK_BT)]		# list of possible inputs and matching button objects
-		for key in keys:								# loop through and check if button has been pressed
-			if input == key[0]:
-				is_pressed = not key[1].is_pressed		# invert reading, because pins are pulldown?
-
-	else:			# for windows / developing
-		# keyboard input
-		for event in pygame_events:
-			if event.type == pygame.KEYDOWN:
-				keys = [(UP, pygame.K_UP), (DOWN, pygame.K_DOWN), (LEFT, pygame.K_LEFT), (RIGHT, pygame.K_RIGHT), 
-						(NEXT, pygame.K_RETURN), (BACK, pygame.K_DELETE)]		# list of possible inputs and matching keys on keyboard
-				for key in keys:					# loop through and check if key has been pressed
-					if input == key[0] and event.key == key[1]:
-						is_pressed = True
+	for key in keys:
+		if key[0] == input and key[2] == False:
+			is_pressed = key[1]
 	
 	return is_pressed
 
@@ -65,6 +89,7 @@ if not gl.os_is_linux:
 VALVES = [11, 0, 26, 19, 27, 22, 10]			# NOTE Valves: set corresponding pins here ([0] is the valve for water, then going from left to right)
 PUMP = 9	
 if gl.os_is_linux:									# 		 Pump: set gpio pin for pump here
+	from gpiozero import LED
 	VALVES_OUT = [LED(VALVES[0]), LED(VALVES[1]), LED(VALVES[2]), LED(VALVES[3]), LED(VALVES[4]), LED(VALVES[5]), LED(VALVES[6])]
 	PUMP_OUT = LED(PUMP)
 valves_state = [False, False, False, False, False, False, False]			# states of the pins

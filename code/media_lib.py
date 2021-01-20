@@ -195,17 +195,21 @@ class Video:
 		self.repeat = False
 		self.frames = 0
 		self.frame_counter = 0
+		self.audio_on = True
 
-	def start(self, repeat=False):
+	def start(self, repeat=False, audio=True):
 		""" starts the video
 		- repeat=False: set True, to play repeatedly
+		- audio=True: True for audio, False for mute
 		"""
 		self.play = True
 		self.repeat = repeat
 		self.cap = cv2.VideoCapture(self.file)
 		self.frames = self.cap.get(cv2.CAP_PROP_FRAME_COUNT)
 		self.frame_counter = 0
-		self._start_audio()
+		self.audio_on = audio
+		if self.audio_on:
+			self._start_audio()
 	
 	def _start_audio(self):
 		""" plays the audio file """
@@ -228,7 +232,8 @@ class Video:
 				if self.repeat:
 					self.frame_counter = 0
 					self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
-					self._start_audio()
+					if self.audio_on:
+						self._start_audio()
 				else:
 					self.play = False
 			

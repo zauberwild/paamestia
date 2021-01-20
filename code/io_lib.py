@@ -24,7 +24,7 @@ def keyboard_input():
 					gl.prog_pos = 'i'
 
 """ ### ### button input ### ### """
-UP, DOWN, LEFT, RIGHT, NEXT, BACK = 14, 15, 18, 21, 24, 25		# NOTE Buttons: set corresponding pins here
+UP, DOWN, LEFT, RIGHT, NEXT, BACK = 14, 15, 215, 23, 24, 25		# NOTE Buttons: set corresponding pins here
 
 if gl.os_is_linux:								# create button objects to read gpio pins
 	from gpiozero import Button, LED

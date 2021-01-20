@@ -24,7 +24,7 @@ def keyboard_input():
 					gl.prog_pos = 'i'
 
 """ ### ### button input ### ### """
-UP, DOWN, LEFT, RIGHT, NEXT, BACK = 0, 1, 2, 3, 4, 5		# NOTE Buttons: set corresponding pins here
+UP, DOWN, LEFT, RIGHT, NEXT, BACK = 14, 15, 18, 23, 24, 25		# NOTE Buttons: set corresponding pins here
 
 if gl.os_is_linux:								# create button objects to read gpio pins
 	from gpiozero import Button, LED
@@ -62,8 +62,8 @@ if not gl.os_is_linux:
 	PORT, BAUD = "COM4", 9600		# NOTE settings for serial comm.
 	ser = serial.Serial(PORT, BAUD)
 
-VALVES = [0, 1, 2, 3, 42, 5, 69]			# NOTE Valves: set corresponding pins here ([0] is the valve for water, then going from left to right)
-PUMP = 420									# 		 Pump: set gpio pin for pump here
+VALVES = [11, 0, 4, 17, 27, 22, 10]			# NOTE Valves: set corresponding pins here ([0] is the valve for water, then going from left to right)
+PUMP = 9									# 		 Pump: set gpio pin for pump here
 valves_state = [False, False, False, False, False, False, False]			# states of the pins
 pump_state = False
 

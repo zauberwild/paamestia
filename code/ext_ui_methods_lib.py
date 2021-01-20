@@ -21,8 +21,8 @@ def loop():
 	""" actions that need to be executed every loop (independently from prog_pos are here)
 		this method will be called before any other actions in the main loop
 	"""
-	# keyboard input
-	io.keyboard_input()
+	io.keyboard_input()		# keyboard input
+	io.update_input()		# button input
 
 	# debug information about input and output
 	if not gl.prog_pos == 'i':
@@ -39,11 +39,13 @@ def loop():
 """ ### ### INTRO / MAIN MENU ### ### """
 intro_active = False
 def intro():
+	gl.prog_pos = 'm'		# DEL when intro needed
+
 	global intro_active, introduction_vid
 
 	if intro_active == False:
 		intro_active = True
-		introduction_vid.start()			# start intro
+		introduction_vid.start(audio=False)			# start intro
 	
 	introduction_vid.draw()				# draw intro
 

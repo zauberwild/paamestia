@@ -26,7 +26,7 @@ test_anim = media_lib.Animation("/src/test_klein/")
 vid_files = "/src/intro_7.mp4"
 test_vid = media_lib.Video(vid_files, "/src/test/forwards.wav")
 
-bar = media_lib.Image("/src/bar_cut.png", 0, 300, 800, 300, direct_load=True)
+bar = media_lib.Image("/src/prop_red.png", 0, 300, 800, 300, direct_load=True)
 
 prog_active = True
 while prog_active:

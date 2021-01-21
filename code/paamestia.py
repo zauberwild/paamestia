@@ -17,7 +17,6 @@ import globals as gl
 import ext_ui_methods_lib as ui
 
 # variables
-debug_font = pygame.freetype.Font(gl.gen_path + "/src/fonts/CamingoCode-Regular.ttf", 24)
 
 # DEL fill screen, can be deleted, when project done
 gl.screen.fill((0,0,127))
@@ -63,7 +62,7 @@ while gl.prog_active:
 		h = 0
 		for t in text:
 			print(t)
-			debug_font.render_to(gl.screen, (0,h), t, (255,0,0))
+			gl.debug_font.render_to(gl.screen, (0,h), t, (255,0,0))
 			h += 32
 		prog_pos = 'm'
 
@@ -74,7 +73,7 @@ while gl.prog_active:
 		debug_main_loop = ["FPS: " + fps[0:6], "prog_pos: " + gl.prog_pos]
 		h = 3
 		for t in debug_main_loop + gl.debug_text:
-			textsur, rect = debug_font.render(t, (0, 255, 0))
+			textsur, rect = gl.debug_font.render(t, (0, 255, 0))
 			pygame.draw.rect(gl.screen, (0,0,0), (0,gl.H - rect.height - h,rect.width,rect.height))
 			gl.screen.blit(textsur, (0,gl.H - rect.height - h))
 			h += rect.height + 3

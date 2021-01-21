@@ -6,6 +6,7 @@ from pathlib import Path								# used to get the complete path of the working d
 gen_path = str(Path(__file__).parent.absolute())		# get the complete path of the "code"-directory
 from os import path											# used to get the complete path of the working directory
 os_is_linux = not path.isfile(gen_path + "/src/.windows")		# looks for a ".windows" file, which only exists on my Windows-PC
+import pygame
 
 prog_active = True		# set to False to end program
 
@@ -16,6 +17,9 @@ prog_pos = 'i'			# saves current position in program flow
 
 show_debug = True		# show debugging information (fps,...)
 debug_text = []			# debug list with all parameters to show. append parameters to this list every loop
+
+debug_font = pygame.freetype.Font(gen_path + "/src/fonts/CamingoCode-Regular.ttf", 24)		# debug font
+debug_font_big = pygame.freetype.Font(gen_path + "/src/fonts/CamingoCode-Regular.ttf", 48)		# debug font, but bigger
 
 # setting the window up
 import pygame

@@ -5,44 +5,102 @@ contains class for graphics, animations and videos
 import os						# used to scan for files and to execute commands from a commandline
 from random import randint		# random function to get random list index in video class
 import pygame, pygame.mixer		# used in Animation-Class for displaying sprites and playing audio files
+import pygame.freetype			# used in Button class to show text
 import cv2 						# used in Video-Class for displaying videos
 import numpy as np 				# used by opencv
 import globals as gl
 
-class Image:
-	""" class for drawing images """
+class Button:
+	""" class for drawing Buttons with different states """
 
-	def __init__(self, path, x, y, width, height, direct_load=False):
+	def __init__(self, path, img_normal, img_selcted, img_disabled, x, y, width, height, direct_load=True, disabled=False, selected=False):
 		""" draw single sprites 
-		- path: path to file
+		- path: path to folder with the files
+		- img_normal, img_selcted, img_disabled:
+			file names for the images
 		- x: x-position
 		- y: y-position
 		- width: width of image
 		- height: height of image
 		- direct_load=False: set True, when the image should directly be loaded
+		- disabled=False: set directly on disabled
+		- selected=False: set directly as selected
 		"""
-		self.path = gl.gen_path + path		# save given params
-		self.x, self.y = x, y
-		self.width, self.height = width, height
+		path = gl.gen_path + path		# save paths
+		self.path_normal 	= path + img_normal
+		self.path_disabled = path + img_disabled
+		self.path_selected 	= path + img_selcted
+		self.x, self.y = x, y						# save x and y coordinate
+		self.width, self.height = width, height		# save width and height
 
-		# additional parameters
-		self.show = False		# 'turn' image on and off
-		self.img = None			# will hold the pygame.Surface object
+		# settings
+		self.show = True		# 'turn' image on and off
+		self.disabled = disabled	# save if image is disabled (greyed out)
+		self.selected = selected	# save if image is selected (somehow marked)
+
+		# pygame.Surface objects
+		self.img_normal 	= None
+		self.img_disabled 	= None
+		self.img_selected 	= None
+
+		# text params
+		self.show_text = False
+		self.text = ""
+		self.font = None
+		self.font_col = (0, 255, 0)
+		self.alignment = 0				# 0 = center, 1 = left, 2 = right
 
 		if direct_load:
 			self.load_image()
 	
+	def add_text(self, text, font, col, alignment=0):
+		""" add text to button
+		- text: text to show [String]
+		- font: font
+		- col: color to use (R, G, B)
+		- alignment=0: alignment (0 = center, 1 = left, 2 = right)
+		"""
+		self.show_text = True
+		self.text = text
+		self.font = font
+		self.font_col = col
+		self.alignment = alignment
+	
 	def load_image(self):
-		self.img = pygame.transform.scale(pygame.image.load(self.path), (self.width, self.height))
+		self.img_normal 	= pygame.transform.scale(pygame.image.load(self.path_normal), (self.width, self.height))
+		self.img_disabled 	= pygame.transform.scale(pygame.image.load(self.path_disabled), (self.width, self.height))
+		self.img_selected 	= pygame.transform.scale(pygame.image.load(self.path_selected), (self.width, self.height))
 	
 	def unload_image(self):
-		self.img = None
+		self.img_normal 	= None
+		self.img_disabled 	= None
+		self.img_selected 	= None
 	
 	def draw(self):
 		"""
 		draw the image
 		"""
-		gl.screen.blit(self.img, (self.x, self.y))		# draw image
+
+		if self.show:			# draw image based on settings
+			if self.disabled:
+				gl.screen.blit(self.img_disabled, (self.x, self.y))
+			else:
+				if self.selected:
+					gl.screen.blit(self.img_selected, (self.x, self.y))
+				else:
+					gl.screen.blit(self.img_normal, (self.x, self.y))
+			
+			if self.show_text:
+				t_x, t_y = self.x, self.y
+				textsur, rect = self.font.render(self.text, self.font_col)	# render text
+				if self.alignment == 0:				# position text based on alignment, button size and rectangle size of text
+					t_x += self.width/2 - rect.width/2
+				elif self.alignment == 1:
+					t_x += rect.x + self.width/10
+				elif self.alignment == 2:
+					t_x += rect.x + self.width - rect.width - self.width/10
+				t_y += rect.y - rect.height/2
+				gl.screen.blit(textsur, (t_x, t_y))
 
 
 class Animation:
@@ -191,7 +249,6 @@ class Video:
 		
 		# stats / params
 		self.play = False
-		self.chosen_file = 0
 		self.repeat = False
 		self.frames = 0
 		self.frame_counter = 0
@@ -208,11 +265,11 @@ class Video:
 		self.frames = self.cap.get(cv2.CAP_PROP_FRAME_COUNT)
 		self.frame_counter = 0
 		self.audio_on = audio
-		if self.audio_on:
+		if self.audio_on:				# if audio on
 			self._start_audio()
 	
 	def _start_audio(self):
-		""" plays the audio file """
+		""" plays the audio file"""
 		pygame.mixer.Sound.play(self.audio)			# start audio
 
 	def stop(self):

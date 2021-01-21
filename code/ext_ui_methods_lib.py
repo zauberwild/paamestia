@@ -39,7 +39,7 @@ def loop():
 """ ### ### INTRO / MAIN MENU ### ### """
 intro_active = False
 def intro():
-	#gl.prog_pos = 'm'		# DEL when intro needed
+	gl.prog_pos = 'm'		# DEL when intro needed
 
 	global intro_active, introduction_vid
 
@@ -53,21 +53,52 @@ def intro():
 		intro_active = False
 		gl.prog_pos = 'm'
 
+menu_active = False
+btn1 = None
+btn2 = None
+btn3 = None
+menu_pos = 0
 def main_menu():
-	gl.screen.fill((127,127,127))
+	global menu_active, btn1, btn2, btn3, menu_pos	
+	
+	if menu_active == False:			# setup
+		menu_active = True
+		btn1 = media_lib.Button("/src/", "prop_black.png", "prop_red.png", "prop_grey.png", 32, 0, 700, 64, selected=True)
+		btn2 = media_lib.Button("/src/", "prop_black.png", "prop_yellow.png", "prop_grey.png", 32, 128, 700, 64)
+		btn3 = media_lib.Button("/src/", "prop_black.png", "prop_green.png", "prop_grey.png", 32, 256, 700, 64)
+		btn1.add_text("erster knopf", gl.debug_font_big, (0,0,255), alignment=1)
+		btn2.add_text("zweiter knopf", gl.debug_font_big, (0,0,255), alignment=0)
+		btn3.add_text("dritter knopf", gl.debug_font_big, (0,0,255), alignment=2)
+	
+	# input
 	if io.readInput(io.UP):
-		io.writeOutput(io.VALVES[1], not io.valves_state[1])
+		menu_pos -= 1
 	if io.readInput(io.DOWN):
-		io.writeOutput(io.VALVES[2], not io.valves_state[2])
-	if io.readInput(io.LEFT):
-		io.writeOutput(io.VALVES[3], not io.valves_state[3])
-	if io.readInput(io.RIGHT):
-		io.writeOutput(io.VALVES[4], not io.valves_state[4])
-	if io.readInput(io.NEXT):
-		io.writeOutput(io.PUMP, 1)
-	if io.readInput(io.BACK):
-		gl.prog_active = False
-		#io.writeOutput(io.PUMP, 0)
+		menu_pos += 1
+	
+	# logic
+	if menu_pos < 0:
+		menu_pos = 2
+	if menu_pos > 2:
+		menu_pos = 0
+	
+	btn1.selected = False
+	btn2.selected = False
+	btn3.selected = False
+	if menu_pos == 0:
+		btn1.selected = True
+	elif menu_pos == 1:
+		btn2.selected = True
+	elif menu_pos == 2:
+		btn3.selected = True
+
+	# draw
+	gl.screen.fill((127,127,127))
+	btn1.draw()
+	btn2.draw()
+	btn3.draw()
+
+	gl.debug_text.append("menu_pos: " + str(menu_pos))
 
 """ ### ### FREE MIXING ### ### """
 def free_transition():

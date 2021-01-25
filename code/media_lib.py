@@ -29,7 +29,7 @@ class Button:
 		path = gl.gen_path + path		# save paths
 		self.path_normal 	= path + img_normal
 		self.path_disabled = path + img_disabled
-		self.path_selected 	= path + img_selcted
+		self.path_selected 	= path + img_selected
 		self.x, self.y = x, y						# save x and y coordinate
 		self.width, self.height = width, height		# save width and height
 

@@ -8,6 +8,11 @@
 		"todo-tree.tree.showCountsInTree": true,
 		"python.analysis.extraPaths": [
             "./code"
-        ]
+		],
+		"typewriterScrollMode.enable": true,
+		"cSpell.words": [
+			"main",
+			"paamestia"
+		]
 	}
 }

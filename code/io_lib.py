@@ -81,10 +81,15 @@ def readInput(input):
 	return is_pressed
 
 """ ### ### output ### ### """
+serial_connected = False
 if not gl.os_is_linux:
 	import serial
 	PORT, BAUD = "COM4", 9600		# NOTE settings for serial comm.
-	ser = serial.Serial(PORT, BAUD)
+	try:
+		ser = serial.Serial(PORT, BAUD)
+		serial_connected = True
+	except:
+		pass
 
 VALVES = [11, 0, 26, 19, 27, 22, 10]			# NOTE Valves: set corresponding pins here ([0] is the valve for water, then going from left to right)
 PUMP = 9										#		Pump:  set pin for pump here
@@ -124,7 +129,10 @@ def writeOutput(out, state):
 		if out == PUMP:
 			text = "7"
 		text += str(int(state)) + '\n'		# add state and newline carrier
-		ser.write(text.encode('utf-8'))		# send text
+
+		global serial_connected
+		if serial_connected:
+			ser.write(text.encode('utf-8'))		# send text
 	
 	# keep the saved states up-to-date
 	for idx, valve in enumerate(VALVES):

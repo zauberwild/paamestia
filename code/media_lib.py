@@ -13,10 +13,10 @@ import globals as gl
 class Button:
 	""" class for drawing Buttons with different states """
 
-	def __init__(self, path, img_normal, img_selcted, img_disabled, x, y, width, height, direct_load=True, disabled=False, selected=False):
+	def __init__(self, path, img_normal, img_selected, img_disabled, x, y, width, height, direct_load=True, disabled=False, selected=False):
 		""" draw single sprites 
 		- path: path to folder with the files
-		- img_normal, img_selcted, img_disabled:
+		- img_normal, img_selected, img_disabled:
 			file names for the images
 		- x: x-position
 		- y: y-position
@@ -168,7 +168,7 @@ class Animation:
 			return
 
 		self.play = True			# start video
-		self. interrupt = False		# unpause video, just in case
+		self. interrupt = False		# un-pause video, just in case
 		self.forwards = forwards	# set params
 		self.repeat = repeat
 		self.audio_mute = not audio
@@ -194,7 +194,7 @@ class Animation:
 				pygame.mixer.Sound.play(self.audio_backwards)
 
 	def pause(self):
-		""" interrupt / unpause the video
+		""" interrupt / un-pause the video
 		"""
 		self.interrupt = not self.interrupt
 	

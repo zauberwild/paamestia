@@ -63,9 +63,9 @@ def main_menu():
 	
 	if menu_active == False:			# setup
 		menu_active = True
-		btn1 = media_lib.Button("/src/", "prop_black.png", "prop_red.png", "prop_grey.png", 32, 0, 700, 64, selected=True)
-		btn2 = media_lib.Button("/src/", "prop_black.png", "prop_yellow.png", "prop_grey.png", 32, 128, 700, 64)
-		btn3 = media_lib.Button("/src/", "prop_black.png", "prop_green.png", "prop_grey.png", 32, 256, 700, 64)
+		btn1 = media_lib.Button("/src/test_files/", "prop_black.png", "prop_red.png", "prop_grey.png", 32, 0, 700, 64, selected=True)
+		btn2 = media_lib.Button("/src/test_files/", "prop_black.png", "prop_yellow.png", "prop_grey.png", 32, 128, 700, 64)
+		btn3 = media_lib.Button("/src/test_files/", "prop_black.png", "prop_green.png", "prop_grey.png", 32, 256, 700, 64)
 		btn1.add_text("UNO", gl.debug_font_big, (0,0,255), alignment=1)
 		btn2.add_text("DOS", gl.debug_font_big, (0,0,255), alignment=0)
 		btn3.add_text("TRES", gl.debug_font_big, (0,0,255), alignment=2)
@@ -91,6 +91,9 @@ def main_menu():
 		btn2.selected = True
 	elif menu_pos == 2:
 		btn3.selected = True
+	
+	if btn1.selected and io.readInput(io.NEXT):
+		print("action!")
 
 	# draw
 	gl.screen.fill((127,127,127))

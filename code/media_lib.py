@@ -26,15 +26,16 @@ class Button:
 		- disabled=False: set directly on disabled
 		- selected=False: set directly as selected
 		"""
-		path = gl.gen_path + path		# save paths
+		path = gl.gen_path + path					# save paths
 		self.path_normal 	= path + img_normal
 		self.path_disabled = path + img_disabled
 		self.path_selected 	= path + img_selected
-		self.x, self.y = x, y						# save x and y coordinate
+
+		self.x, self.y = x, y						# save x and y coordinates
 		self.width, self.height = width, height		# save width and height
 
 		# settings
-		self.show = True		# 'turn' image on and off
+		self.show = False			# 'turn' image on and off
 		self.disabled = disabled	# save if image is disabled (greyed out)
 		self.selected = selected	# save if image is selected (somehow marked)
 
@@ -67,14 +68,18 @@ class Button:
 		self.alignment = alignment
 	
 	def load_image(self):
+		""" loads image as pygame.Surfaces """
 		self.img_normal 	= pygame.transform.scale(pygame.image.load(self.path_normal), (self.width, self.height))
 		self.img_disabled 	= pygame.transform.scale(pygame.image.load(self.path_disabled), (self.width, self.height))
 		self.img_selected 	= pygame.transform.scale(pygame.image.load(self.path_selected), (self.width, self.height))
+		self.show = True
 	
 	def unload_image(self):
+		""" deletes pygame.Surface objects """
 		self.img_normal 	= None
 		self.img_disabled 	= None
 		self.img_selected 	= None
+		self.show = False
 	
 	def draw(self):
 		"""
@@ -93,6 +98,7 @@ class Button:
 			if self.show_text:
 				t_x, t_y = self.x, self.y
 				textsur, rect = self.font.render(self.text, self.font_col)	# render text
+
 				if self.alignment == 0:				# position text based on alignment, button size and rectangle size of text
 					t_x += self.width/2 - rect.width/2
 				elif self.alignment == 1:
@@ -100,7 +106,8 @@ class Button:
 				elif self.alignment == 2:
 					t_x += rect.x + self.width - rect.width - self.width/10
 				t_y += rect.y - rect.height/2
-				gl.screen.blit(textsur, (t_x, t_y))
+
+				gl.screen.blit(textsur, (t_x, t_y))		# finally blit it
 
 
 class Animation:

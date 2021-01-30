@@ -78,7 +78,9 @@ def refresh_drinks_list():
 	file.close()
 
 	for idx, i in enumerate(drinks_list):		# remove trailing newline characters
-		drinks_list[idx] = drinks_list[idx].removesuffix("\n")
+		#drinks_list[idx] = drinks_list[idx].removesuffix("\n")
+		if drinks_list[idx].endswith('\n'):
+			drinks_list[idx] = drinks_list[idx][:-1]
 
 refresh_drinks_list()
 

@@ -72,27 +72,27 @@ def set_drink(plug, drink):
 	"""
 	global drinks, plugs
 
-	#print("DR SD set drinks started")
+	print("DR SD set drinks started")
 
 	if plug < 1 or plug > 6:
 		return					# break when wrong plug given
 	
-	#print("DR SD plug range test passed")
+	print("DR SD plug range test passed")
 
-	if type(drink) != int and type(drink) != str:		# break when input type not correct
+	if not (type(drink) == int or type(drink) == str or drink is None):		# break when input type not correct
 		return
 	
-	#print("DR SD drink type test passed")
+	print("DR SD drink type test passed")
 
 	if type(drink) == int:		# get drink name when index given
 		drink = drinks[drink]
 	
-	#print("DR SD index conversion passed")
+	print("DR SD index conversion passed")
 	
-	if not drink in drinks:
+	if not (drink in drinks or drink is None):
 		return					# break when drink is not available
 	
-	#print("DR SD drink existence check passed")
+	print("DR SD drink existence check passed")
 	
 	plugs[plug] = drink			# set drink on plug
 

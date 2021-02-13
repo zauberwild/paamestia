@@ -66,7 +66,7 @@ def main_menu():
 	
 	if menu_active == False:			# setup
 		menu_active = True
-		btn1 = media_lib.Button("/src/props/", "prop_black.png", "prop_green.png", "prop_grey.png", 32, 0, 700, 64, selected=True)
+		btn1 = media_lib.Button("/src/props/", "prop_black.png", "prop_green.png", "prop_grey.png", 32, 0, 700, 64)
 		btn2 = media_lib.Button("/src/props/", "prop_black.png", "prop_yellow.png", "prop_grey.png", 32, 128, 700, 64)
 		btn3 = media_lib.Button("/src/props/", "prop_black.png", "prop_red.png", "prop_grey.png", 32, 256, 700, 64)
 		btn1.add_text("SET DRINKS", gl.debug_font_big, (0,0,255), alignment=1)

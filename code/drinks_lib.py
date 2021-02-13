@@ -229,7 +229,7 @@ def update_mixing():
 
 		# add debug information
 		if gl.show_debug:
-			gl.debug_text.append("MIX cur. cmd.: " + str(cmd))
+			gl.debug_text.append("MIX cur. cmd.: " + str(cmd) + "; prev. cmd.: " + str(commands[recipe_step-1]))
 			gl.debug_text.append("MIX cmd nr.: " + str(recipe_step) + " / " + str(len(commands)))
 
 def get_still_mixing():

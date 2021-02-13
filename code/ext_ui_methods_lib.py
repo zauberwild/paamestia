@@ -4,7 +4,7 @@ this file include all methods for the user interface
 
 import globals as gl
 import media_lib
-import drinks_lib
+import drinks_lib as drinks
 import io_lib as io
 
 """ ### ### SETUP / LOOP ### ### """
@@ -23,6 +23,8 @@ def loop():
 	"""
 	io.keyboard_input()		# keyboard input
 	io.update_input()		# button input
+
+	drinks.update_mixing()		# update mixing process
 
 	# debug information about input and output
 	if not gl.prog_pos == 'i':
@@ -58,17 +60,18 @@ btn1 = None
 btn2 = None
 btn3 = None
 menu_pos = 0
+
 def main_menu():
-	global menu_active, btn1, btn2, btn3, menu_pos	
+	global menu_active, btn1, btn2, btn3, menu_pos, test_recipe	
 	
 	if menu_active == False:			# setup
 		menu_active = True
-		btn1 = media_lib.Button("/src/props/", "prop_black.png", "prop_red.png", "prop_grey.png", 32, 0, 700, 64, selected=True)
+		btn1 = media_lib.Button("/src/props/", "prop_black.png", "prop_green.png", "prop_grey.png", 32, 0, 700, 64, selected=True)
 		btn2 = media_lib.Button("/src/props/", "prop_black.png", "prop_yellow.png", "prop_grey.png", 32, 128, 700, 64)
-		btn3 = media_lib.Button("/src/props/", "prop_black.png", "prop_green.png", "prop_grey.png", 32, 256, 700, 64)
-		btn1.add_text("UNO", gl.debug_font_big, (0,0,255), alignment=1)
-		btn2.add_text("DOS", gl.debug_font_big, (0,0,255), alignment=0)
-		btn3.add_text("TRES", gl.debug_font_big, (0,0,255), alignment=2)
+		btn3 = media_lib.Button("/src/props/", "prop_black.png", "prop_red.png", "prop_grey.png", 32, 256, 700, 64)
+		btn1.add_text("SET DRINKS", gl.debug_font_big, (0,0,255), alignment=1)
+		btn2.add_text("START MIXING", gl.debug_font_big, (0,0,255), alignment=0)
+		btn3.add_text("RESET DRINKS", gl.debug_font_big, (0,0,255), alignment=2)
 	
 	# input
 	if io.readInput(io.UP):
@@ -82,6 +85,8 @@ def main_menu():
 	if menu_pos > 2:
 		menu_pos = 2
 	
+	
+	
 	btn1.selected = False
 	btn2.selected = False
 	btn3.selected = False
@@ -93,7 +98,24 @@ def main_menu():
 		btn3.selected = True
 	
 	if btn1.selected and io.readInput(io.NEXT):
-		print("action!")
+		drinks.set_drink(1, 3)
+		drinks.set_drink(2, 1)
+		drinks.set_drink(3, 5)
+		drinks.set_drink(4, 4)
+		drinks.set_drink(5, 2)
+		print("UI drinks set")
+	
+	if btn2.selected and io.readInput(io.NEXT):
+		print("UI starting mixing")
+		drinks.start_mixing("Pangalaktischer_Donnergurgler")
+	
+	if btn3.selected and io.readInput(io.NEXT):
+		drinks.set_drink(1, None)
+		drinks.set_drink(2, None)
+		drinks.set_drink(3, None)
+		drinks.set_drink(4, None)
+		drinks.set_drink(5, None)
+		print("UI drink resetted")
 
 	# draw
 	gl.screen.fill((127,127,127))

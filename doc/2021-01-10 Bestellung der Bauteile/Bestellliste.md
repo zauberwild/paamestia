@@ -1,17 +1,17 @@
-- Auf Lager: Raspberry Pi 3, Monitor.
-- Magnetventile (7 Stück, Ausführung A: 3,39€ * 7 + 4,90€        Versand = 28.63€)
+- Auf Lager: Raspberry Pi 3, Monitor. x
+- Magnetventile (7 Stück, Ausführung A: 3,39€ * 7 + 4,90€        Versand = 28.63€) 1
    https://www.ebay.de/itm/Mini-12V-Magnetventil-Flussigkeit-Pneumatik-Elektromagnet-Ventil-Elektroventil/132330361464?hash=item1ecf811278:g:Z4EAAOSw6mZe8k4p
-- Schlauch und Schlauchverbinder (1x: 8,99€)
+- Schlauch und Schlauchverbinder (1x: 8,99€) ?
    [https://www.amazon.de/RUNCCI-Schlauchverbinder-Verbinder-schlauchverbinder%EF%BC%8CI-Luftschlauch/dp/B07RTHNSWK/ref=pd_sbs_199_3/261-4391009-4390455?_encoding=UTF8&pd_rd_i=B07RTHNSWK&pd_rd_r=ceec4cf2-2b5d-469b-95c4-ddd156785a28&pd_rd_w=0I1tE&pd_rd_wg=KCNc9&pf_rd_p=ad79fb78-2eb6-4fd8-b228-cb6e6b4589d9&pf_rd_r=EF0D7972RT788MPH7MCM&refRID=EF0D7972RT788MPH7MCM&th=1](https://www.amazon.de/RUNCCI-Schlauchverbinder-Verbinder-schlauchverbinder，I-Luftschlauch/dp/B07RTHNSWK/ref=pd_sbs_199_3/261-4391009-4390455?_encoding=UTF8&pd_rd_i=B07RTHNSWK&pd_rd_r=ceec4cf2-2b5d-469b-95c4-ddd156785a28&pd_rd_w=0I1tE&pd_rd_wg=KCNc9&pf_rd_p=ad79fb78-2eb6-4fd8-b228-cb6e6b4589d9&pf_rd_r=EF0D7972RT788MPH7MCM&refRID=EF0D7972RT788MPH7MCM&th=1)
-- zusätzl. Schlauch (1x, 4x6mm: 8,99€)
+- zusätzl. Schlauch (1x, 4x6mm: 8,99€) x
    https://www.amazon.de/SWNKDG-Wasserschlauch-Luftschlauch-Kraftstoffschlauch-Benzinschlauch/dp/B081PRX2H3/ref=pd_bxgy_3/261-4391009-4390455?_encoding=UTF8&pd_rd_i=B081PRX2H3&pd_rd_r=9fa6b8fe-37bb-48cb-9ca6-13a7eb01bf66&pd_rd_w=01YLZ&pd_rd_wg=wpHOH&pf_rd_p=4490d326-3239-499b-8c8a-0dd8d6ad582a&pf_rd_r=YQ66KSW2MA9SYW0522XV&psc=1&refRID=YQ66KSW2MA9SYW0522XV
 - Relais-Board (1x: 7,49€)
    [https://www.amazon.de/AZDelivery-8-Relais-Optokoppler-Low-Level-Trigger-Arduino/dp/B07CT7SLYQ/ref=sr_1_8?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1XKVNJ5KDLTPH&dchild=1&keywords=azdelivery+relay&qid=1607777597&sprefix=azdeliver%2Caps%2C275&sr=8-8](https://www.amazon.de/AZDelivery-8-Relais-Optokoppler-Low-Level-Trigger-Arduino/dp/B07CT7SLYQ/ref=sr_1_8?__mk_de_DE=ÅMÅŽÕÑ&crid=1XKVNJ5KDLTPH&dchild=1&keywords=azdelivery+relay&qid=1607777597&sprefix=azdeliver%2Caps%2C275&sr=8-8)
 - Schlauchpumpe (1x: 11,89€)
    [https://www.amazon.de/Schlauchpumpe-Fl%C3%BCssigkeitspumpe-Schlauchwasserpumpe-Silikonschlauch-Pharmazeutika/dp/B07TVDXJQN](https://www.amazon.de/Schlauchpumpe-Flüssigkeitspumpe-Schlauchwasserpumpe-Silikonschlauch-Pharmazeutika/dp/B07TVDXJQN)
-- Silikonstopfen (1x, 30 x Ø24 x 18 mm : 20,99€)
+- Silikonstopfen (1x, 30 x Ø24 x 18 mm : 20,99€) x
    [https://www.amazon.de/Tuuters-Silikonstopfen-Konische-Abdeckstopfen-Gummistopfen/dp/B01LWOXOLZ/ref=sr_1_5?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=11L4LGF9305AW&dchild=1&keywords=silikonstopfen&qid=1607778777&sprefix=silikonstopf%2Caps%2C253&sr=8-5&th=1](https://www.amazon.de/Tuuters-Silikonstopfen-Konische-Abdeckstopfen-Gummistopfen/dp/B01LWOXOLZ/ref=sr_1_5?__mk_de_DE=ÅMÅŽÕÑ&crid=11L4LGF9305AW&dchild=1&keywords=silikonstopfen&qid=1607778777&sprefix=silikonstopf%2Caps%2C253&sr=8-5&th=1)
 - Taster (1x: 8,99€)
    [https://www.amazon.de/Gebildet-Druckknopfschalter-Autotrompete-Tischlampe-Haust%C3%BCrklingel/dp/B07XRBDBXT/ref=sr_1_6?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dchild=1&keywords=taster&qid=1607780968&sr=8-6](https://www.amazon.de/Gebildet-Druckknopfschalter-Autotrompete-Tischlampe-Haustürklingel/dp/B07XRBDBXT/ref=sr_1_6?__mk_de_DE=ÅMÅŽÕÑ&dchild=1&keywords=taster&qid=1607780968&sr=8-6)
-- Netzteil (1x: 11,99€)
+- Netzteil (1x: 11,99€) x
    https://www.amazon.de/Netzteil-Transformator-Universelles-AC110-240V-Geeignet/dp/B0871TVVRR/ref=pd_sbs_201_1/261-4391009-4390455?_encoding=UTF8&pd_rd_i=B0871TVVRR&pd_rd_r=9c307cf3-26e9-4868-b3f7-a5e2930114ac&pd_rd_w=Qgvps&pd_rd_wg=NaYdi&pf_rd_p=ad79fb78-2eb6-4fd8-b228-cb6e6b4589d9&pf_rd_r=7Q7QPZ3VQS7GJDGTN35V&psc=1&refRID=7Q7QPZ3VQS7GJDGTN35V

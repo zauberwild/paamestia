@@ -14,10 +14,9 @@ gen_path = str(Path(__file__).parent.absolute())		# get the complete path of the
 drink_file_path = gen_path + "/src/drinks"				# path of drinks file
 
 """ output variables """
-SIZE_GLASS = 250 					# size of glass in ml
-MIN_UNIT = 25						# smallest possible unit in ml
-TIME_PER_UNIT = 11					# time need to fill one unit in seconds
-N_UNITS = SIZE_GLASS / MIN_UNIT		# amount of units
+_UNIT_SIZE = 250 					# size of one unit in ml
+_TIME_PER_UNIT = 25					# time needed to fill one unit in milliseconds
+TIME_PER_ML = _UNIT_SIZE / _TIME_PER_UNIT
 
 """ debug variables """
 os_is_linux = not path.isfile(gen_path + "/src/.windows")		# looks for a ".windows" file, which only exists on my Windows-PC

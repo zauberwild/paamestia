@@ -27,16 +27,17 @@ def loop():
 	drinks.update_mixing()		# update mixing process
 
 	# debug information about input and output
-	if not gl.prog_pos == 'i':
-		i_s = "O: "
-		for i in io.valves_state:
-			i_s += str(int(i)) + "; "
-		i_s += str(int(io.pump_state))
-		gl.debug_text.append(i_s)
-		i_s = "I: up: " + str(int(io.readInput(io.UP))) + "; down: " + str(int(io.readInput(io.DOWN))) + "; left: " + str(int(io.readInput(io.LEFT))) + "; right: " + str(int(io.readInput(io.RIGHT))) + ";"
-		gl.debug_text.append(i_s)
-		i_s = "I: next: " + str(int(io.readInput(io.NEXT))) + "; back: " + str(int(io.readInput(io.BACK)))
-		gl.debug_text.append(i_s)
+	if gl.show_debug:
+		if not gl.prog_pos == 'i':
+			i_s = "O: "
+			for i in io.valves_state:
+				i_s += str(int(i)) + "; "
+			i_s += str(int(io.pump_state))
+			gl.debug_text.append(i_s)
+			i_s = "I: up: " + str(int(io.readInput(io.UP))) + "; down: " + str(int(io.readInput(io.DOWN))) + "; left: " + str(int(io.readInput(io.LEFT))) + "; right: " + str(int(io.readInput(io.RIGHT))) + ";"
+			gl.debug_text.append(i_s)
+			i_s = "I: next: " + str(int(io.readInput(io.NEXT))) + "; back: " + str(int(io.readInput(io.BACK)))
+			gl.debug_text.append(i_s)
 
 """ ### ### INTRO / MAIN MENU ### ### """
 intro_active = False

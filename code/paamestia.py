@@ -15,6 +15,7 @@ pygame.freetype.init()
 # imports
 import globals as gl
 import ext_ui_methods_lib as ui
+import subprocess
 
 # variables
 
@@ -69,8 +70,14 @@ while gl.prog_active:
 
 	# debug infos
 	if gl.show_debug:
-		fps = str(gl.clock.get_fps())
+		fps = str(gl.clock.get_fps())											# get fps
 		debug_main_loop = ["FPS: " + fps[0:6], "prog_pos: " + gl.prog_pos]
+
+		if gl.os_is_linux:
+			result = subprocess.run(['cat', '/sys/class/thermal/thermal_zone*/temp'], stdout=subprocess.PIPE)
+			result = float(result) / 1000
+			debug_main_loop[0] += " || CPU-Temp: " + str(result)
+
 		h = 3
 		for t in debug_main_loop + gl.debug_text:
 			textsur, rect = gl.debug_font.render(t, (0, 255, 0))

@@ -75,7 +75,7 @@ while gl.prog_active:
 
 		if gl.os_is_linux:
 			result = subprocess.run(['cat', '/sys/class/thermal/thermal_zone*/temp'], stdout=subprocess.PIPE)
-			result = float(result) / 1000
+			result = float(result.stdout) / 1000
 			debug_main_loop[0] += " || CPU-Temp: " + str(result)
 
 		h = 3

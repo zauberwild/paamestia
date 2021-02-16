@@ -42,5 +42,6 @@ if os_is_linux:
 else:
 	screen = pygame.display.set_mode((W,H))
 
+pygame.mouse.set_visible(False)			# hide cursor
 pygame.display.set_caption("paamestia_main")
 clock = pygame.time.Clock()

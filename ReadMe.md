@@ -18,7 +18,19 @@ Quellcode
 ### src
 Alle zum Programm zugehörigen Dateien
 
-#### recipes
+##### einzelne Dateien:
+
+| Datei    | Erklärung                                                    |
+| -------- | ------------------------------------------------------------ |
+| .windows | wird genutzt, um das Betriebssystem zu erkennen. Dies ist notwendig, weil ein paar Sachen auf dem Raspberry Pi (bzw. Linux) anders funktionieren als auf Windows |
+| drinks   | Auflistung aller verwendbaren Getränke                       |
+
+##### fonts
+
+ttf-Dateien für Schriftarten, z. B. für Text auf Schaltflächen
+
+
+#####  recipes
 Hier werden alle Rezepte abgespeichert  
 Der Rezept-Name wird vom Dateinamen vorgegeben und in der ersten Zeile stehen zusätzliche Details zum Rezept. Der Rest der Datei bildet das Rezept nach folgender Formatierung:  
 `<Getränk1>,<Menge in ml>`  
@@ -26,8 +38,11 @@ Der Rezept-Name wird vom Dateinamen vorgegeben und in der ersten Zeile stehen zu
 `<Getränk3>,<Menge in ml>`  
 `...`  
 
-#### media
+##### media
 Beinhaltet die Video-Ordner und sonstige Mediendateien
+
+##### props / test / test_klein
+Beinhaltet Platzhalter-Dateien
 
 ---
 

@@ -76,7 +76,7 @@ while gl.prog_active:
 			result = result.stdout.decode('utf-8')
 			#result = int(result) / 1000
 			#print()
-			debug_main_loop[0] += " || CPU-Temp: " + result[5:9] + "°C"
+			debug_main_loop[0] += " || CPU-Temp: " + result[5:9] + "^oC"
 
 		h = 3
 		for t in debug_main_loop + gl.debug_text:

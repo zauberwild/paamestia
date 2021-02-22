@@ -17,8 +17,6 @@ import globals as gl
 import ext_ui_methods_lib as ui
 import subprocess
 
-# variables
-
 # DEL fill screen, can be deleted, when project done
 gl.screen.fill((0,0,127))
 pygame.display.flip()

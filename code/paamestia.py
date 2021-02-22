@@ -74,9 +74,11 @@ while gl.prog_active:
 		debug_main_loop = ["FPS: " + fps[0:6], "prog_pos: " + gl.prog_pos]
 
 		if gl.os_is_linux:
-			result = subprocess.run(['cat', '/sys/class/thermal/thermal_zone*/temp'], stdout=subprocess.PIPE)
-			result = int(result.stdout) / 1000
-			debug_main_loop[0] += " || CPU-Temp: " + str(result)
+			result = subprocess.run(['vcgencmd', 'measure_temp'], stdout=subprocess.PIPE)
+			result = result.stdout.decode('utf-8')
+			#result = int(result) / 1000
+			#print()
+			debug_main_loop[0] += " || CPU-Temp: " + result[5:9] + "°C"
 
 		h = 3
 		for t in debug_main_loop + gl.debug_text:

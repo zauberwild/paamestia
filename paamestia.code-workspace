@@ -13,12 +13,14 @@
 		"cSpell.words": [
 			"arkturanischer",
 			"fallianisches",
+			"gpio",
 			"hyperminz",
 			"janx",
 			"main",
 			"paamestia",
 			"qualaktinischen",
 			"zamphuor"
-		]
+		],
+		"python.pythonPath": "c:\\python39\\python.exe"
 	}
 }

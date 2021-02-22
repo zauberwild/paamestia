@@ -84,7 +84,7 @@ def readInput(input):
 serial_connected = False
 if not gl.os_is_linux:
 	import serial
-	PORT, BAUD = "COM4", 9600		# NOTE settings for serial comm.
+	PORT, BAUD = "COM5", 9600		# NOTE settings for serial comm.
 	try:
 		ser = serial.Serial(PORT, BAUD)
 		serial_connected = True

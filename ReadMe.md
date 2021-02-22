@@ -18,7 +18,7 @@ Quellcode
 ### src
 Alle zum Programm zugehörigen Dateien
 
-##### einzelne Dateien:
+##### einzelne Dateien
 
 | Datei    | Erklärung                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -31,7 +31,7 @@ ttf-Dateien für Schriftarten, z. B. für Text auf Schaltflächen
 
 
 #####  recipes
-Hier werden alle Rezepte abgespeichert  
+Hier werden alle Rezepte abgespeichert.  
 Der Rezept-Name wird vom Dateinamen vorgegeben und in der ersten Zeile stehen zusätzliche Details zum Rezept. Der Rest der Datei bildet das Rezept nach folgender Formatierung:  
 `<Getränk1>,<Menge in ml>`  
 `<Getränk2>,<Menge in ml>`  

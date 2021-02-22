@@ -20,6 +20,7 @@
 			"paamestia",
 			"qualaktinischen",
 			"zamphuor"
-		]
+		],
+		"python.pythonPath": "c:\\python39\\python.exe"
 	}
 }
